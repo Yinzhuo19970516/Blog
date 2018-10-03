@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[一道题]]></title>
+    <url>%2FJavascript%2F1%2F</url>
+    <content type="text"><![CDATA[12345var a = &#123;n : 1&#125;; var b = a; a.x =a = &#123;n : 2&#125;; console.log(a.x); // undefinedconsole.log(b.x); // &#123; n:2 &#125; 解析JS引用类型指针的工作方式&emsp;&emsp;首先是a指向了一个对象｛n:1｝,b指向了a所指向的对象&emsp;&emsp;然后 a.x = a = { n:2 }&emsp;&emsp;js赋值运算顺序为从右往左，不过由于”.”运算符优先级最高，所以先计算a.x。此时a指向的对象｛n:1 }新增了新的属性x,这个x的值为undefined。&emsp;&emsp;接着执行赋值预算 a={n:2},这个时候a指向的对象就发生了变化，指向了新的对象 ｛n:2｝。&emsp;&emsp;继续执行 a.x = a。此时啊a.x已经指向了对象｛n:1,x=undefined}中的x,等待被赋值，那么这个对象就变成了｛n:1,x:{n:2}｝,也就是b所指向的对象。 本质在于 .运算优先于=赋值运算如果还是理解不了，可以看图 ###其实这种题也只能拿来做考题，正常也不会有人这么写代码，写出来怕自己也理解不了。更多的写法是分开写会好一些。譬如：12345678910111213141516var a=&#123;n:1&#125;;var b=&#123;n:2&#125;;var c=a;var d;b.x=d=a.x=a=&#123;n:3&#125;//等价于a.x=&#123;n:3&#125;;b.x=&#123;n:3&#125;;a=&#123;n:3&#125;;d=&#123;n:3&#125;//结果是a : &#123;n:3&#125;b : &#123;n:2,x:&#123;n:3&#125;&#125;c : &#123;n:1,x:&#123;n:3&#125;&#125;d : &#123;n:3&#125;]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+</search>
