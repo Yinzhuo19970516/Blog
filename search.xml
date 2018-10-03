@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[神奇的Javascript]]></title>
+    <url>%2FJavascript%2F2%2F</url>
+    <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&gt;typeof NaN&lt;"number"//not a number,但它是number type的,NaN 的检测 isNaN。&gt;9999999999999999&lt;10000000000000000//js整数精度15位&gt;0.5 + 0.1 == 0.6&lt;true//小数精度17位&gt;0.1 + 0.2 == 0.3&lt;false//0.1+0.2值为0.30000000000000004.永远不要测定某个特点的浮点数值//可以通过乘以10或除以10来计算: 0.3&gt;Math.max()&lt;-Infinity// max 是 Math 的静态方法,返回给定的一组数字中的最大值。// 如果没有参数，结果为[`-bInfinity`]// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]&gt;Math.min()&lt;Infinity// min 是 Math 的静态方法,返回给定的一组数字中的最大值。// 如果没有参数，结果为[`Infinity`]// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]&gt;[] + []&lt;""//+中空数组转为空字符串，//在-，*运算中[]被转化为0&gt;[] + &#123;&#125;&lt;"[object object]"&gt;&#123;&#125; + []&lt;0&gt;true + true + true === 3&lt;true&gt;true - true&lt;0&gt;true == 1&lt;true&gt;true === 1&gt;false&gt;(!+[]+[]+![]).length&lt;9//我也看不懂，js是门玄学&gt;9+"1"&lt;"91"&gt;91-"1"&lt;90&gt;[] == 0&lt;true ###在JavaScript中,加法的规则其实很简单,只有两种情况:你只能把数字和数字相加,或者字符串和字符串相加,所有其他类型的值都会被自动转换成这两种类型的值. 参考文章:https://segmentfault.com/a/1190000008038678参考文章:https://github.com/jawil/blog/issues/1原文链接:yinzhuo.online]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>玄学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一道题]]></title>
     <url>%2FJavascript%2F1%2F</url>
     <content type="text"><![CDATA[12345var a = &#123;n : 1&#125;; var b = a; a.x =a = &#123;n : 2&#125;; console.log(a.x); // undefinedconsole.log(b.x); // &#123; n:2 &#125; 解析JS引用类型指针的工作方式&emsp;&emsp;首先是a指向了一个对象｛n:1｝,b指向了a所指向的对象&emsp;&emsp;然后 a.x = a = { n:2 }&emsp;&emsp;js赋值运算顺序为从右往左，不过由于”.”运算符优先级最高，所以先计算a.x。此时a指向的对象｛n:1 }新增了新的属性x,这个x的值为undefined。&emsp;&emsp;接着执行赋值预算 a={n:2},这个时候a指向的对象就发生了变化，指向了新的对象 ｛n:2｝。&emsp;&emsp;继续执行 a.x = a。此时啊a.x已经指向了对象｛n:1,x=undefined}中的x,等待被赋值，那么这个对象就变成了｛n:1,x:{n:2}｝,也就是b所指向的对象。 本质在于 .运算优先于=赋值运算如果还是理解不了，可以看图 ###其实这种题也只能拿来做考题，正常也不会有人这么写代码，写出来怕自己也理解不了。更多的写法是分开写会好一些。譬如：12345678910111213141516var a=&#123;n:1&#125;;var b=&#123;n:2&#125;;var c=a;var d;b.x=d=a.x=a=&#123;n:3&#125;//等价于a.x=&#123;n:3&#125;;b.x=&#123;n:3&#125;;a=&#123;n:3&#125;;d=&#123;n:3&#125;//结果是a : &#123;n:3&#125;b : &#123;n:2,x:&#123;n:3&#125;&#125;c : &#123;n:1,x:&#123;n:3&#125;&#125;d : &#123;n:3&#125;]]></content>
