@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[SVG和Canvas]]></title>
+    <url>%2FJavascript%2F5%2F</url>
+    <content type="text"><![CDATA[Canvs和SVG都是前端绘图技术 ##SVG 指可缩放矢量图形，是用于描述二维矢量图形的一种图形格式，是由万维网联盟制定的开发标准。SVG使用XML格式来定义图形。这意味着SVG DOM中的每个元素都是可用的. 所以可以为每个元素附加JavaScript事件处理器在SVG中, 每个被绘制的图像均被视为对象. 如果SVG对象的属性发生变化, 那么浏览器能够自动重现图像 ##Canvas 一个容器Canvas通过js来绘制2D图形Canvas是逐像素进行渲染的在Canvas中, 一旦图形被绘制完成, 它就不会继续得到浏览器的关注. 如果其位置发生变化, 那么整个场景也需要重新绘制, 包括任何或许已被图形覆盖的对象. ##区别 Canvas支持分辨率, SVG不支持Canvas不支持事件处理器, SVG支持Canvas只有弱的文本渲染能力, 而SVG最适合带有大型渲染区域的应用程序(比如谷歌地图)Canvas能够以.png或.jpg格式保存结果图像SVG的复杂度过高的话会减慢渲染速度(任何过度使用DOM的应用都不快)Canvas最适合图像密集型的游戏, 其中的许多对象会被频繁重绘. 而SVG不适合游戏应用Canvas是基于位图的图像,它不能够改变大小, 只能缩放显示; SVG是基于矢量的, 所以它能够很好地处理图形大小的改变 Canvas提供的功能更原始, 适合像素处理, 动态渲染和大数据量绘制; SVG功能更完善, 适合静态图片显示, 高保真文档查看和打印的应用场景绘制Canvas对象后, 不能使用脚本和CSS对它进行修改; 而SVG对象是文档对象模型的一部分, 所以可以随时使用脚本和CSS修改它们 ##位图和矢量图的优缺点 位图与分辨率无关，缩放后不会失真；位图放大会产生马赛克。位图色彩表现能力丰富；矢量图色彩简单。位图大；矢量图小。矢量图可以轻松转为位图，位图不能轻易转为矢量图。 ##绘图时交互过多选svg,绘图效率高选canvas。]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>D3.js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Javascript字符串方法总结]]></title>
     <url>%2FJavascript%2F4%2F</url>
     <content type="text"><![CDATA[###字符方法 string.chartAt()srting.chartCodeAt() ###字符串操作方法 srting.concat()string.slice()string.substr()//第二个参数指定的是返回的个数//会把第二参数的负值转换为0string.substring()//都对原字符串没有影响//会把所有负值参数转换为0 ###字符串位置方法 string.indexOf()string.lastIndexOf() ###trim()方法 string.trim()//删除前后空格 ###大小写转换方法 string.toLowerCase()string.toUpperCase() ###匹配方法 string.match()string.search()string.replace()string.slice() ###其他方法 localeCompare()//比较字符串fromCharCode()//字符编码转为字符串 ###ES6新方法 string.includes()string.startsWith()string.endsWith()//前三个只接受字符串，不接受正则表达式，可以用indexOf()string.repeat()]]></content>
