@@ -114,7 +114,7 @@
 <meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-6/11167294.jpg">
 <meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-3/37143975.jpg">
 <meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-3/1-2.jpg">
-<meta property="og:updated_time" content="2018-10-06T05:04:34.430Z">
+<meta property="og:updated_time" content="2018-10-06T05:40:14.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一道题">
 <meta name="twitter:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-6/11167294.jpg">
@@ -377,7 +377,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T13:04:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-06T13:40:14+08:00">
                 2018-10-06
               </time>
             
@@ -464,7 +464,7 @@
       
 
       
-        <p><img src="http://pg0douyd3.bkt.clouddn.com/18-10-6/11167294.jpg" alt="封面"></p>
+        <p><img src="http://pg0douyd3.bkt.clouddn.com/18-10-6/11167294.jpg" alt="赵霁"></p>
 <a id="more"></a>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">n</span> : <span class="number">1</span>&#125;;    </span><br><span class="line"><span class="keyword">var</span> b = a;  </span><br><span class="line">a.x =a = &#123;<span class="attr">n</span> : <span class="number">2</span>&#125;;  </span><br><span class="line"><span class="built_in">console</span>.log(a.x);    <span class="comment">// undefined</span></span><br><span class="line"><span class="built_in">console</span>.log(b.x);    <span class="comment">// &#123; n:2 &#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><h3 id="JS引用类型指针的工作方式"><a href="#JS引用类型指针的工作方式" class="headerlink" title="JS引用类型指针的工作方式"></a>JS引用类型指针的工作方式</h3><p>&emsp;&emsp;首先是a指向了一个对象｛n:1｝,b指向了a所指向的对象<br>&emsp;&emsp;然后 <strong>a.x = a = { n:2 }</strong><br>&emsp;&emsp;js赋值运算顺序为从右往左，不过由于”.”运算符优先级最高，所以先计算a.x。此时a指向的对象｛n:1 }新增了新的属性x,这个x的值为undefined。<br>&emsp;&emsp;接着执行赋值预算 <strong>a={n:2}</strong>,这个时候a指向的对象就发生了变化，指向了新的对象 ｛n:2｝。<br>&emsp;&emsp;继续执行 <strong>a.x = a</strong>。此时啊a.x已经指向了对象｛n:1,x=undefined}中的x,等待被赋值，那么这个对象就变成了｛n:1,x:{n:2}｝,也就是b所指向的对象。</p>
