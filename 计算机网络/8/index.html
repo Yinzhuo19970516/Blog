@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Javascript,面试,Javascript高级程序设计," />
+  <meta name="keywords" content="面试,笔记,HTTP," />
 
 
 
@@ -105,17 +105,17 @@
 
 
 
-<meta name="keywords" content="Javascript,面试,Javascript高级程序设计">
+<meta name="keywords" content="面试,笔记,HTTP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript中事件处理程序">
-<meta property="og:url" content="http://yinzhuo.online/Javascript/7/index.html">
+<meta property="og:title" content="从从输入URL到页面加载经历了什么（更新中）">
+<meta property="og:url" content="http://yinzhuo.online/计算机网络/8/index.html">
 <meta property="og:site_name" content="YinZhuo&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/82045273.jpg">
-<meta property="og:updated_time" content="2018-10-09T15:40:51.941Z">
+<meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/51090259.jpg">
+<meta property="og:updated_time" content="2018-10-11T15:54:17.305Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript中事件处理程序">
-<meta name="twitter:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/82045273.jpg">
+<meta name="twitter:title" content="从从输入URL到页面加载经历了什么（更新中）">
+<meta name="twitter:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/51090259.jpg">
 
 
 
@@ -145,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="http://yinzhuo.online/Javascript/7/"/>
+  <link rel="canonical" href="http://yinzhuo.online/计算机网络/8/"/>
 
 
 
 
 
-  <title>Javascript中事件处理程序 | YinZhuo's Blog</title>
+  <title>从从输入URL到页面加载经历了什么（更新中） | YinZhuo's Blog</title>
   
 
 
@@ -330,7 +330,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yinzhuo.online/Javascript/7/">
+    <link itemprop="mainEntityOfPage" href="http://yinzhuo.online/计算机网络/8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="尹卓">
@@ -347,7 +347,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javascript中事件处理程序</h1>
+          <h1 class="post-title" itemprop="name headline">从从输入URL到页面加载经历了什么（更新中）</h1>
         
 
         <div class="post-meta">
@@ -359,8 +359,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-09T23:38:26+08:00">
-                2018-10-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T23:49:17+08:00">
+                2018-10-11
               </time>
             
 
@@ -375,8 +375,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-09T23:40:51+08:00">
-                2018-10-09
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-11T23:54:17+08:00">
+                2018-10-11
               </time>
             
           </span>
@@ -394,8 +394,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
                   </a>
                 </span>
 
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  595
+                  350
                 </span>
               
 
@@ -441,7 +441,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  1
                 </span>
               
             </div>
@@ -462,33 +462,37 @@
       
 
       
-        <p><img src="http://pg0douyd3.bkt.clouddn.com/18-10-8/82045273.jpg" alt="封面"></p>
+        <p><img src="http://pg0douyd3.bkt.clouddn.com/18-10-8/51090259.jpg" alt="封面"></p>
 <a id="more"></a>
-<p>###1、在DOM中，直接用onXXX=”fun();”进行绑定（HTML中直接绑定）</p>
+<p>##1.DNS解析</p>
+<p>  ###网址转为IP地址，是一个递归查询的过程</p>
+<p>  ###DNS优化：DNS缓存（多级缓存）</p>
+<p>##2.TCP连接</p>
+<p>##3.发送http请求</p>
+<p>  ###请求报文由三部分组成：请求行，请求报头和请求正文</p>
+<p>  ###请求头：</p>
 <blockquote>
-<p><button id="btn" onclick="fun()">事件绑定</button><br>事件处理程序<br>var fun = function(){……..}；<br>移除事件处理程序<br>fun = function(){}</p>
+<p>Method Request-URL HTTP-Version CRLF<br>eg: GET index.html HTTP/1.1</p>
 </blockquote>
-<p>####优点：简单方便</p>
-<p>####缺点：js和html耦合度太高，每次修改函数要变动两个地方。<br>                   存在一个时差问题，用户可能会在HTML元素一出现就触发事件，但是事件处理程序没有加载好</p>
-<p>###2、在Javascript代码中用 DOM对象.onXXX=fun 进行绑定（通过js指定事件处理程序）</p>
+<p>  ###请求报头：</p>
 <blockquote>
-<p> document.getElementById(“btn”).onclick = fun;//此处绑定的是函数名<br>移除事件处理程序<br>document.getElementById(‘btn’).onclick = null;</p>
+<p>Accept:可以处理的文件类型<br>User-Agent:浏览器版本和操作系统<br>Accept-Encoding:可以处理的压缩，编码格式：gizp<br>Host:主机<br>Cache-Control<br>Connection:keep-alive长连接<br>Cookie<br>//post请求时<br>Referer:访问的来源网址，跟踪来访者的来源和记录<br>content-length:</p>
 </blockquote>
-<p>####优点：简单方便，有跨浏览器优势</p>
-<p>####缺点：存在时差问题</p>
-<p>###3、用 DOM对象.attachEvent(“onXXX”,fun) 进行绑定(IE事件处理程序)</p>
+<p>  ###请求正文：</p>
+<p>  ####当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中</p>
+<p>##4.服务器处理请求并返回http报文</p>
+<p>###响应报文由三部分组成：状态码，响应报头和响应报文</p>
+<p>  ###响应报头</p>
 <blockquote>
-<p>var a = document.getElementById(“btn”)<br>a.attachEvent(“onclick”, fun);<br>// 移除句柄<br>a.detachEvent(‘onclick’, fun);<br>接受两个参数，一个事件处理程序名称，一个事件处理函数匿名函数能被移除，参数必须相同）</p>
+<p>server:服务器版本<br>Date<br>Content-type:请求类型(text/html,image/gif)<br>Transfer-Encoding: chuncked ： 分块传输<br>Connection：keep-alive<br>Cache-control: private  //会使用缓存<br>Expires:缓存过期时间<br>Content-Encoding:  gizp //图片资源一般不会压缩<br>X-UA-Compatible:浏览器兼容字段<br>Content-length<br>Keep-alive: timeout =5 , max =100</p>
 </blockquote>
-<p>####优点：可以给一个元素添加多个事件处理程序，所有事件都会被添加到冒泡阶段，事件执行顺序逆序执行</p>
-<p>###4、DOM2级事件处理程序</p>
-<blockquote>
-<p>var a = document.getElementById(‘btn’);<br>a.addEventListener(‘click’,function(){ });<br>// event: 事件名称<br>// function: 事件函数<br>// boolean: false | true, true 为事件捕获, false 为事件冒泡(默认);<br>Ele.addEventListener(event,function[,boolean]); // 添加句柄<br>Ele.removeEventListener(event,function[,boolean]); // 移除句柄（匿名函数能被移除，参数必须相同）</p>
-</blockquote>
-<p>####优点：可以给一个添加多个事件处理程序，事件执行顺序顺序执行</p>
-<p>###5、跨浏览器事件处理程序</p>
-<p>####如果我们既要支持IE的事件处理方法，又要支持 DOM 2级事件，那么就要封装一个跨浏览器的事件处理函数，如果支持 DOM 2级事件，就用addEventListener，否则就用attachEvent。例子如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//跨浏览器事件处理程序</span></span><br><span class="line"><span class="keyword">var</span> eventUtil = &#123;</span><br><span class="line">    <span class="comment">// 添加句柄</span></span><br><span class="line">    addHandler: <span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(element.addEventListener)&#123;</span><br><span class="line">            element.addEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(element.attachEvent)&#123;</span><br><span class="line">            element.attachEvent(<span class="string">'on'</span> + type, handler);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            element[<span class="string">'on'</span> + type] = handler;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 删除句柄</span></span><br><span class="line">    removeHandler: <span class="function"><span class="keyword">function</span>(<span class="params">element, type, handler</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(element.removeEventListener)&#123;</span><br><span class="line">            element.removeEventListener(type, handler, <span class="literal">false</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(element.detachEvent)&#123;</span><br><span class="line">            element.detachEvent(<span class="string">'on'</span> + type, handler);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            element[<span class="string">'on'</span> + type] = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> oBtn = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">evtFn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">'hello world'</span>);</span><br><span class="line">&#125;</span><br><span class="line">eventUtil.addHandler(oBtn, <span class="string">'click'</span>, evtFn);</span><br><span class="line">eventUtil.removeHandler(oBtn, <span class="string">'click'</span>, evtFn);</span><br></pre></td></tr></table></figure>
+<p>   ###响应报文</p>
+<p>   ####HTML，css，js，图片</p>
+<p>##5.浏览器解析渲染页面</p>
+<p>###dom树</p>
+<p>###渲染树（重排和重绘）</p>
+<p>###js解析：一个主线程+一个任务队列</p>
+<p>##6.链接结束</p>
 
       
     </div>
@@ -508,7 +512,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yinzhuo.online/Javascript/7/" title="Javascript中事件处理程序">http://yinzhuo.online/Javascript/7/</a>
+    <a href="http://yinzhuo.online/计算机网络/8/" title="从从输入URL到页面加载经历了什么（更新中）">http://yinzhuo.online/计算机网络/8/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -531,11 +535,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i> Javascript</a>
-          
             <a href="/tags/面试/" rel="tag"><i class="fa fa-tag"></i> 面试</a>
           
-            <a href="/tags/Javascript高级程序设计/" rel="tag"><i class="fa fa-tag"></i> Javascript高级程序设计</a>
+            <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
+          
+            <a href="/tags/HTTP/" rel="tag"><i class="fa fa-tag"></i> HTTP</a>
           
         </div>
       
@@ -548,8 +552,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Javascript/6/" rel="next" title="Javascript运算符优先级和结合性">
-                <i class="fa fa-chevron-left"></i> Javascript运算符优先级和结合性
+              <a href="/Javascript/7/" rel="next" title="Javascript中事件处理程序">
+                <i class="fa fa-chevron-left"></i> Javascript中事件处理程序
               </a>
             
           </div>
@@ -557,10 +561,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/计算机网络/8/" rel="prev" title="从从输入URL到页面加载经历了什么（更新中）">
-                从从输入URL到页面加载经历了什么（更新中） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
