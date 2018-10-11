@@ -112,7 +112,7 @@
 <meta property="og:site_name" content="YinZhuo&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/51090259.jpg">
-<meta property="og:updated_time" content="2018-10-11T15:54:17.305Z">
+<meta property="og:updated_time" content="2018-10-11T15:56:57.731Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从从输入URL到页面加载经历了什么（更新中）">
 <meta name="twitter:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/51090259.jpg">
@@ -375,7 +375,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-10-11T23:54:17+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-10-11T23:56:57+08:00">
                 2018-10-11
               </time>
             
@@ -425,7 +425,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  350
+                  405
                 </span>
               
 
@@ -464,36 +464,16 @@
       
         <p><img src="http://pg0douyd3.bkt.clouddn.com/18-10-8/51090259.jpg" alt="封面"></p>
 <a id="more"></a>
-<p>##1.DNS解析</p>
-<p>  ###网址转为IP地址，是一个递归查询的过程</p>
-<p>  ###DNS优化：DNS缓存（多级缓存）</p>
-<p>##2.TCP连接</p>
-<p>##3.发送http请求</p>
-<p>  ###请求报文由三部分组成：请求行，请求报头和请求正文</p>
-<p>  ###请求头：</p>
-<blockquote>
+<h2 id="1-DNS解析"><a href="#1-DNS解析" class="headerlink" title="1.DNS解析"></a>1.DNS解析</h2><h3 id="nbsp-nbsp-nbsp-nbsp-网址转为IP地址，是一个递归查询的过程"><a href="#nbsp-nbsp-nbsp-nbsp-网址转为IP地址，是一个递归查询的过程" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;网址转为IP地址，是一个递归查询的过程"></a>&nbsp;&nbsp;&nbsp;&nbsp;网址转为IP地址，是一个递归查询的过程</h3><h3 id="nbsp-nbsp-nbsp-nbsp-DNS优化：DNS缓存（多级缓存）"><a href="#nbsp-nbsp-nbsp-nbsp-DNS优化：DNS缓存（多级缓存）" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;DNS优化：DNS缓存（多级缓存）"></a>&nbsp;&nbsp;&nbsp;&nbsp;DNS优化：DNS缓存（多级缓存）</h3><h2 id="2-TCP连接"><a href="#2-TCP连接" class="headerlink" title="2.TCP连接"></a>2.TCP连接</h2><h2 id="3-发送http请求"><a href="#3-发送http请求" class="headerlink" title="3.发送http请求"></a>3.发送http请求</h2><h3 id="nbsp-nbsp-nbsp-nbsp-请求报文由三部分组成：请求行，请求报头和请求正文"><a href="#nbsp-nbsp-nbsp-nbsp-请求报文由三部分组成：请求行，请求报头和请求正文" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;请求报文由三部分组成：请求行，请求报头和请求正文"></a>&nbsp;&nbsp;&nbsp;&nbsp;请求报文由三部分组成：请求行，请求报头和请求正文</h3><h3 id="nbsp-nbsp-nbsp-nbsp-请求头："><a href="#nbsp-nbsp-nbsp-nbsp-请求头：" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;请求头："></a>&nbsp;&nbsp;&nbsp;&nbsp;请求头：</h3><blockquote>
 <p>Method Request-URL HTTP-Version CRLF<br>eg: GET index.html HTTP/1.1</p>
 </blockquote>
-<p>  ###请求报头：</p>
-<blockquote>
+<h3 id="nbsp-nbsp-nbsp-nbsp-请求报头："><a href="#nbsp-nbsp-nbsp-nbsp-请求报头：" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;请求报头："></a>&nbsp;&nbsp;&nbsp;&nbsp;请求报头：</h3><blockquote>
 <p>Accept:可以处理的文件类型<br>User-Agent:浏览器版本和操作系统<br>Accept-Encoding:可以处理的压缩，编码格式：gizp<br>Host:主机<br>Cache-Control<br>Connection:keep-alive长连接<br>Cookie<br>//post请求时<br>Referer:访问的来源网址，跟踪来访者的来源和记录<br>content-length:</p>
 </blockquote>
-<p>  ###请求正文：</p>
-<p>  ####当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中</p>
-<p>##4.服务器处理请求并返回http报文</p>
-<p>###响应报文由三部分组成：状态码，响应报头和响应报文</p>
-<p>  ###响应报头</p>
-<blockquote>
+<h3 id="nbsp-nbsp-nbsp-nbsp-请求正文："><a href="#nbsp-nbsp-nbsp-nbsp-请求正文：" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;请求正文："></a>&nbsp;&nbsp;&nbsp;&nbsp;请求正文：</h3><h4 id="nbsp-nbsp-nbsp-nbsp-当使用POST-PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中"><a href="#nbsp-nbsp-nbsp-nbsp-当使用POST-PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中"></a>&nbsp;&nbsp;&nbsp;&nbsp;当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中</h4><h2 id="4-服务器处理请求并返回http报文"><a href="#4-服务器处理请求并返回http报文" class="headerlink" title="4.服务器处理请求并返回http报文"></a>4.服务器处理请求并返回http报文</h2><h3 id="nbsp-nbsp-nbsp-nbsp-响应报文由三部分组成：状态码，响应报头和响应报文"><a href="#nbsp-nbsp-nbsp-nbsp-响应报文由三部分组成：状态码，响应报头和响应报文" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;响应报文由三部分组成：状态码，响应报头和响应报文"></a>&nbsp;&nbsp;&nbsp;&nbsp;响应报文由三部分组成：状态码，响应报头和响应报文</h3><h3 id="nbsp-nbsp-nbsp-nbsp-响应报头"><a href="#nbsp-nbsp-nbsp-nbsp-响应报头" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;响应报头"></a>&nbsp;&nbsp;&nbsp;&nbsp;响应报头</h3><blockquote>
 <p>server:服务器版本<br>Date<br>Content-type:请求类型(text/html,image/gif)<br>Transfer-Encoding: chuncked ： 分块传输<br>Connection：keep-alive<br>Cache-control: private  //会使用缓存<br>Expires:缓存过期时间<br>Content-Encoding:  gizp //图片资源一般不会压缩<br>X-UA-Compatible:浏览器兼容字段<br>Content-length<br>Keep-alive: timeout =5 , max =100</p>
 </blockquote>
-<p>   ###响应报文</p>
-<p>   ####HTML，css，js，图片</p>
-<p>##5.浏览器解析渲染页面</p>
-<p>###dom树</p>
-<p>###渲染树（重排和重绘）</p>
-<p>###js解析：一个主线程+一个任务队列</p>
-<p>##6.链接结束</p>
-
+<h3 id="nbsp-nbsp-nbsp-nbsp-响应报文"><a href="#nbsp-nbsp-nbsp-nbsp-响应报文" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;响应报文"></a>&nbsp;&nbsp;&nbsp;&nbsp;响应报文</h3><h4 id="nbsp-nbsp-nbsp-nbsp-HTML，css，js，图片"><a href="#nbsp-nbsp-nbsp-nbsp-HTML，css，js，图片" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;HTML，css，js，图片"></a>&nbsp;&nbsp;&nbsp;&nbsp;HTML，css，js，图片</h4><h2 id="5-浏览器解析渲染页面"><a href="#5-浏览器解析渲染页面" class="headerlink" title="5.浏览器解析渲染页面"></a>5.浏览器解析渲染页面</h2><h3 id="nbsp-nbsp-nbsp-nbsp-dom树"><a href="#nbsp-nbsp-nbsp-nbsp-dom树" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;dom树"></a>&nbsp;&nbsp;&nbsp;&nbsp;dom树</h3><h3 id="nbsp-nbsp-nbsp-nbsp-渲染树（重排和重绘）"><a href="#nbsp-nbsp-nbsp-nbsp-渲染树（重排和重绘）" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;渲染树（重排和重绘）"></a>&nbsp;&nbsp;&nbsp;&nbsp;渲染树（重排和重绘）</h3><h3 id="nbsp-nbsp-nbsp-nbsp-js解析：一个主线程-一个任务队列"><a href="#nbsp-nbsp-nbsp-nbsp-js解析：一个主线程-一个任务队列" class="headerlink" title="&nbsp;&nbsp;&nbsp;&nbsp;js解析：一个主线程+一个任务队列"></a>&nbsp;&nbsp;&nbsp;&nbsp;js解析：一个主线程+一个任务队列</h3><h2 id="6-链接结束"><a href="#6-链接结束" class="headerlink" title="6.链接结束"></a>6.链接结束</h2>
       
     </div>
     
@@ -617,8 +597,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -728,6 +717,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-DNS解析"><span class="nav-number">1.</span> <span class="nav-text">1.DNS解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-网址转为IP地址，是一个递归查询的过程"><span class="nav-number">1.1.</span> <span class="nav-text">    网址转为IP地址，是一个递归查询的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-DNS优化：DNS缓存（多级缓存）"><span class="nav-number">1.2.</span> <span class="nav-text">    DNS优化：DNS缓存（多级缓存）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TCP连接"><span class="nav-number">2.</span> <span class="nav-text">2.TCP连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-发送http请求"><span class="nav-number">3.</span> <span class="nav-text">3.发送http请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-请求报文由三部分组成：请求行，请求报头和请求正文"><span class="nav-number">3.1.</span> <span class="nav-text">    请求报文由三部分组成：请求行，请求报头和请求正文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-请求头："><span class="nav-number">3.2.</span> <span class="nav-text">    请求头：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-请求报头："><span class="nav-number">3.3.</span> <span class="nav-text">    请求报头：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-请求正文："><span class="nav-number">3.4.</span> <span class="nav-text">    请求正文：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-当使用POST-PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中"><span class="nav-number">3.4.1.</span> <span class="nav-text">    当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-服务器处理请求并返回http报文"><span class="nav-number">4.</span> <span class="nav-text">4.服务器处理请求并返回http报文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-响应报文由三部分组成：状态码，响应报头和响应报文"><span class="nav-number">4.1.</span> <span class="nav-text">    响应报文由三部分组成：状态码，响应报头和响应报文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-响应报头"><span class="nav-number">4.2.</span> <span class="nav-text">    响应报头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-响应报文"><span class="nav-number">4.3.</span> <span class="nav-text">    响应报文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-HTML，css，js，图片"><span class="nav-number">4.3.1.</span> <span class="nav-text">    HTML，css，js，图片</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-浏览器解析渲染页面"><span class="nav-number">5.</span> <span class="nav-text">5.浏览器解析渲染页面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-dom树"><span class="nav-number">5.1.</span> <span class="nav-text">    dom树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-渲染树（重排和重绘）"><span class="nav-number">5.2.</span> <span class="nav-text">    渲染树（重排和重绘）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nbsp-nbsp-nbsp-nbsp-js解析：一个主线程-一个任务队列"><span class="nav-number">5.3.</span> <span class="nav-text">    js解析：一个主线程+一个任务队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-链接结束"><span class="nav-number">6.</span> <span class="nav-text">6.链接结束</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
