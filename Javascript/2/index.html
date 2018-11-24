@@ -115,7 +115,7 @@
 <meta property="og:image" content="https://www.superbed.cn/pic/5bf17f1ac4ff9e24a0d68701">
 <meta property="og:image" content="https://www.superbed.cn/pic/5bf17f29c4ff9e24a0d68702">
 <meta property="og:image" content="https://www.superbed.cn/pic/5bf17f3dc4ff9e24bf0ee12b">
-<meta property="og:updated_time" content="2018-11-18T15:43:09.108Z">
+<meta property="og:updated_time" content="2018-11-24T14:43:23.210Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="神奇的Javascript">
 <meta name="twitter:image" content="https://www.superbed.cn/pic/5bf17efec4ff9e24bf0ee12a">
@@ -378,8 +378,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-18T23:43:09+08:00">
-                2018-11-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-24T22:43:23+08:00">
+                2018-11-24
               </time>
             
           </span>
@@ -465,11 +465,9 @@
       
 
       
-        <p><img src="https://www.superbed.cn/pic/5bf17efec4ff9e24bf0ee12a" alt="封面"></p>
-<a id="more"></a>
+        <p><img src="https://www.superbed.cn/pic/5bf17efec4ff9e24bf0ee12a" style="width:600px; display:block;"><br><a id="more"></a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="keyword">typeof</span>  <span class="literal">NaN</span></span><br><span class="line">&lt;<span class="string">"number"</span></span><br><span class="line"><span class="comment">//not a number,但它是number type的,NaN 的检测 isNaN。</span></span><br><span class="line">&gt;<span class="number">9999999999999999</span></span><br><span class="line">&lt;<span class="number">10000000000000000</span></span><br><span class="line"><span class="comment">//js整数精度15位</span></span><br><span class="line">&gt;<span class="number">0.5</span> + <span class="number">0.1</span> == <span class="number">0.6</span></span><br><span class="line">&lt;<span class="literal">true</span></span><br><span class="line"><span class="comment">//小数精度17位</span></span><br><span class="line">&gt;<span class="number">0.1</span> + <span class="number">0.2</span> == <span class="number">0.3</span></span><br><span class="line">&lt;<span class="literal">false</span></span><br><span class="line"><span class="comment">//0.1+0.2值为0.30000000000000004.永远不要测定某个特点的浮点数值</span></span><br><span class="line"><span class="comment">//可以通过乘以10或除以10来计算: 0.3</span></span><br><span class="line">&gt;<span class="built_in">Math</span>.max()</span><br><span class="line">&lt;-<span class="literal">Infinity</span></span><br><span class="line"><span class="comment">// max 是 Math 的静态方法,返回给定的一组数字中的最大值。</span></span><br><span class="line"><span class="comment">// 如果没有参数，结果为[`-bInfinity`]</span></span><br><span class="line"><span class="comment">// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]</span></span><br><span class="line">&gt;<span class="built_in">Math</span>.min()</span><br><span class="line">&lt;<span class="literal">Infinity</span></span><br><span class="line"><span class="comment">// min 是 Math 的静态方法,返回给定的一组数字中的最大值。</span></span><br><span class="line"><span class="comment">// 如果没有参数，结果为[`Infinity`]</span></span><br><span class="line"><span class="comment">// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]</span></span><br><span class="line">&gt;[] + []</span><br><span class="line">&lt;<span class="string">""</span></span><br><span class="line"><span class="comment">//+中空数组转为空字符串，</span></span><br><span class="line"><span class="comment">//在-，*运算中[]被转化为0</span></span><br><span class="line">&gt;[] + &#123;&#125;</span><br><span class="line">&lt;<span class="string">"[object object]"</span></span><br><span class="line"></span><br><span class="line">&gt;&#123;&#125; + []</span><br><span class="line">&lt;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">&gt;<span class="literal">true</span> + <span class="literal">true</span> + <span class="literal">true</span> === <span class="number">3</span></span><br><span class="line">&lt;<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&gt;<span class="literal">true</span> - <span class="literal">true</span></span><br><span class="line">&lt;<span class="number">0</span></span><br><span class="line"></span><br><span class="line">&gt;<span class="literal">true</span> == <span class="number">1</span></span><br><span class="line">&lt;<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">&gt;<span class="literal">true</span> === <span class="number">1</span></span><br><span class="line">&gt;<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">&gt;(!+[]+[]+![]).length</span><br><span class="line">&lt;<span class="number">9</span></span><br><span class="line"><span class="comment">//我也看不懂，js是门玄学</span></span><br><span class="line">&gt;<span class="number">9</span>+<span class="string">"1"</span></span><br><span class="line">&lt;<span class="string">"91"</span></span><br><span class="line"></span><br><span class="line">&gt;<span class="number">91</span>-<span class="string">"1"</span></span><br><span class="line">&lt;<span class="number">90</span></span><br><span class="line"></span><br><span class="line">&gt;[] == <span class="number">0</span></span><br><span class="line">&lt;<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<p>###在JavaScript中,加法的规则其实很简单,只有两种情况:你只能把数字和数字相加,或者字符串和字符串相加,所有其他类型的值都会被自动转换成这两种类型的值.</p>
-<p><img src="https://www.superbed.cn/pic/5bf17f1ac4ff9e24a0d68701" alt="2-1"><br><img src="https://www.superbed.cn/pic/5bf17f29c4ff9e24a0d68702" alt="2-2"><br><img src="https://www.superbed.cn/pic/5bf17f3dc4ff9e24bf0ee12b" alt="2-3"></p>
+<h3 id="在JavaScript中-加法的规则其实很简单-只有两种情况-你只能把数字和数字相加-或者字符串和字符串相加-所有其他类型的值都会被自动转换成这两种类型的值"><a href="#在JavaScript中-加法的规则其实很简单-只有两种情况-你只能把数字和数字相加-或者字符串和字符串相加-所有其他类型的值都会被自动转换成这两种类型的值" class="headerlink" title="在JavaScript中,加法的规则其实很简单,只有两种情况:你只能把数字和数字相加,或者字符串和字符串相加,所有其他类型的值都会被自动转换成这两种类型的值."></a>在JavaScript中,加法的规则其实很简单,只有两种情况:你只能把数字和数字相加,或者字符串和字符串相加,所有其他类型的值都会被自动转换成这两种类型的值.</h3><p><img src="https://www.superbed.cn/pic/5bf17f1ac4ff9e24a0d68701" alt="2-1"><br><img src="https://www.superbed.cn/pic/5bf17f29c4ff9e24a0d68702" alt="2-2"><br><img src="https://www.superbed.cn/pic/5bf17f3dc4ff9e24bf0ee12b" alt="2-3"></p>
 <blockquote>
 <blockquote>
 <p><a href="https://segmentfault.com/a/1190000008038678" target="_blank" rel="noopener">参考文章:https://segmentfault.com/a/1190000008038678</a><br><a href="https://github.com/jawil/blog/issues/1" target="_blank" rel="noopener">参考文章:https://github.com/jawil/blog/issues/1</a><br><a href="yinzhuo.online">原文链接:yinzhuo.online</a></p>
@@ -542,8 +540,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Javascript/3/" rel="prev" title="Javascript数组方法总结">
-                Javascript数组方法总结 <i class="fa fa-chevron-right"></i>
+              <a href="/Javascript/4/" rel="prev" title="Javascript字符串方法总结">
+                Javascript字符串方法总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -601,8 +599,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -621,7 +628,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -632,7 +639,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -643,7 +650,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -713,6 +720,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在JavaScript中-加法的规则其实很简单-只有两种情况-你只能把数字和数字相加-或者字符串和字符串相加-所有其他类型的值都会被自动转换成这两种类型的值"><span class="nav-number">1.</span> <span class="nav-text">在JavaScript中,加法的规则其实很简单,只有两种情况:你只能把数字和数字相加,或者字符串和字符串相加,所有其他类型的值都会被自动转换成这两种类型的值.</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -754,7 +777,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">3.3k</span>
+    <span title="Site words total count">5.2k</span>
   
 </div>
 

@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Javascript,笔记,Javascript高级程序设计," />
+  <meta name="keywords" content="笔记,小程序," />
 
 
 
@@ -105,17 +105,19 @@
 
 
 
-<meta name="keywords" content="Javascript,笔记,Javascript高级程序设计">
+<meta name="keywords" content="笔记,小程序">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Javascript数组方法总结">
-<meta property="og:url" content="http://yinzhuo.online/Javascript/3/index.html">
+<meta property="og:title" content="微信小程序底层原理调研">
+<meta property="og:url" content="http://yinzhuo.online/xcx/9/index.html">
 <meta property="og:site_name" content="YinZhuo&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.superbed.cn/pic/5bf17f7bc4ff9e24bf0ee12c">
-<meta property="og:updated_time" content="2018-11-24T14:43:04.775Z">
+<meta property="og:image" content="https://api.superbed.cn/pic/5bf95c75c4ff9e05833a08f6">
+<meta property="og:image" content="https://www.superbed.cn/pic/5bf7976ec4ff9e05833a0706">
+<meta property="og:image" content="https://www.superbed.cn/pic/5bf79798c4ff9e05833a0707">
+<meta property="og:updated_time" content="2018-11-24T14:36:35.996Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Javascript数组方法总结">
-<meta name="twitter:image" content="https://www.superbed.cn/pic/5bf17f7bc4ff9e24bf0ee12c">
+<meta name="twitter:title" content="微信小程序底层原理调研">
+<meta name="twitter:image" content="https://api.superbed.cn/pic/5bf95c75c4ff9e05833a08f6">
 
 
 
@@ -145,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="http://yinzhuo.online/Javascript/3/"/>
+  <link rel="canonical" href="http://yinzhuo.online/xcx/9/"/>
 
 
 
 
 
-  <title>Javascript数组方法总结 | YinZhuo's Blog</title>
+  <title>微信小程序底层原理调研 | YinZhuo's Blog</title>
   
 
 
@@ -330,7 +332,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yinzhuo.online/Javascript/3/">
+    <link itemprop="mainEntityOfPage" href="http://yinzhuo.online/xcx/9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="尹卓">
@@ -347,7 +349,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Javascript数组方法总结</h1>
+          <h1 class="post-title" itemprop="name headline">微信小程序底层原理调研</h1>
         
 
         <div class="post-meta">
@@ -359,8 +361,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T13:53:54+08:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-24T22:04:03+08:00">
+                2018-11-24
               </time>
             
 
@@ -375,7 +377,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-24T22:43:04+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-24T22:36:35+08:00">
                 2018-11-24
               </time>
             
@@ -394,8 +396,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">Javascript</span>
+                  <a href="/categories/xcx/" itemprop="url" rel="index">
+                    <span itemprop="name">xcx</span>
                   </a>
                 </span>
 
@@ -425,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  315
+                  1.4k
                 </span>
               
 
@@ -441,7 +443,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -462,37 +464,90 @@
       
 
       
-        <p><img src="https://www.superbed.cn/pic/5bf17f7bc4ff9e24bf0ee12c" style="width:600px; display:block;"><br><a id="more"></a></p>
-<h3 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h3><blockquote>
-<p>array.isArray()</p>
+        <p><img src="https://api.superbed.cn/pic/5bf95c75c4ff9e05833a08f6" style="width:600px; display:block;"></p>
+<a id="more"></a>
+<h2 id="为什么小程序比较快？"><a href="#为什么小程序比较快？" class="headerlink" title="为什么小程序比较快？"></a>为什么小程序比较快？</h2><p>安装包缓存<br>分包加载<br>双线程<br>webview预加载<br>native组件</p>
+<h2 id="什么是wxs"><a href="#什么是wxs" class="headerlink" title="什么是wxs?"></a>什么是wxs?</h2><blockquote>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/</a></p>
 </blockquote>
-<h3 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h3><blockquote>
-<p>array.toString()<br>array.valueOf()<br>array.join()<br>//join使用不同的分隔符来构建字符串<br>//若不给join传入任何值，或者给它传入undefined，则使用逗号作为分隔符</p>
+<p>与 WXML 是在同一个线程运行的，避免了跨线程通信的开销</p>
+<h2 id="双线程"><a href="#双线程" class="headerlink" title="双线程"></a>双线程</h2><ul>
+<li>逻辑层：创建一个单独的线程去执行 JavaScript，在这个环境下执行的都是有关小程序业务逻辑的代码</li>
+<li>渲染层：界面渲染相关的任务全都在 WebView 线程里执行，通过逻辑层代码去控制渲染哪些界面。一个小程序存在多个界面，所以渲染层存在多个 WebView 线程</li>
+<li>双线程通信<ul>
+<li>在渲染层把 WXML 转化成对应的 JS 对象。</li>
+<li>在逻辑层发生数据变更的时候，通过宿主环境提供的 setData 方法把数据从逻辑层传递到 Native，再转发到渲染层。</li>
+<li>经过对比前后差异，把差异应用在原来的 DOM 树上，更新界面。</li>
+</ul>
+</li>
+<li>优点：不会阻塞，可以有多个webview,页面切换更流畅</li>
+<li>缺点：<ul>
+<li>在 page-frame 上无法调用业务 JS。</li>
+<li>跨线程通信的成本很高，不适合需要频繁通信的场景。</li>
+<li>业务 JS 无法直接控制 DOM。</li>
+</ul>
+</li>
+</ul>
+<p>所以引入了wxs<br><img src="https://www.superbed.cn/pic/5bf7976ec4ff9e05833a0706" alt=""></p>
+<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><p>冷启动 热启动<br>更新机制 </p>
+<ul>
+<li>冷启动时如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要等下一次冷启动才会应用上。 </li>
+<li>如果需要马上应用最新版本，可以使用 wx.getUpdateManager API 进行处理。</li>
+</ul>
+<p>运行机制</p>
+<ul>
+<li>小程序没有重启的概念</li>
+<li>当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后（目前是5分钟）会被微信主动销毁</li>
+<li>当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁</li>
+</ul>
+<h2 id="view"><a href="#view" class="headerlink" title="view"></a>view</h2><ul>
+<li>wcc index.wxml</li>
+<li>wcsc index.wxss</li>
+<li>component 使用Polymer框架实现Web Component</li>
+<li>Native Component 目前Native实现的组件有canvas video map textarea;Native组件层在WebView层之上</li>
+</ul>
+<h2 id="webview预加载"><a href="#webview预加载" class="headerlink" title="webview预加载"></a>webview预加载</h2><p>每次小程序进入除了当前页面,Native预先额外加载一个WebView<br>当打开指定页面时，用默认数据直接渲染，请求数据回来时局部更新<br>返回显示历史View<br>退出小程序，View状态不销毁</p>
+<h2 id="逻辑层"><a href="#逻辑层" class="headerlink" title="逻辑层"></a>逻辑层</h2><h3 id="数据绑定-Binding"><a href="#数据绑定-Binding" class="headerlink" title="数据绑定 Binding"></a>数据绑定 Binding</h3><blockquote>
+<p>单向数据流</p>
+<ul>
+<li>识别哪个UI元素被绑定了相应的对象。</li>
+<li>监视对象状态的变化。</li>
+<li>将所有变化传播到绑定的视图上。</li>
+</ul>
 </blockquote>
-<h3 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h3><blockquote>
-<p>array.push(“a”)<br>array.pop()<br>//调用pop()时，它会返回数组的最后一项</p>
+<h3 id="生命周期-Life-Cycle"><a href="#生命周期-Life-Cycle" class="headerlink" title="生命周期 Life Cycle"></a>生命周期 Life Cycle</h3><blockquote>
+<p>渲染层和逻辑层之间通信，是通过 Native 转发实现的。<br>逻辑层通过 Page 实例的setData方法传递数据到渲染层。由于需要两个线程的一些通信消耗，为了提高性能，每次只设置需要改变的最小单位数据。<br>生命周期顺序：onLoad -&gt; onShow -&gt; onReady。<br><img src="https://www.superbed.cn/pic/5bf79798c4ff9e05833a0707" alt=""></p>
 </blockquote>
-<h3 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h3><blockquote>
-<p>array.shift()<br>//调用shift()时，它会返回数组的第一项<br>array.unshift(“b”)</p>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><p>通过WeixinJSBridge和Native 进行通信</p>
+<h3 id="路由-Router"><a href="#路由-Router" class="headerlink" title="路由 Router"></a>路由 Router</h3><h2 id="小程序优点"><a href="#小程序优点" class="headerlink" title="小程序优点"></a>小程序优点</h2><ul>
+<li>提前新建WebView，准备新页面渲染。</li>
+<li>View层和逻辑层分离，通过数据驱动，不直接操作DOM。</li>
+<li>使用Virtual DOM，进行局部更新。</li>
+<li>全部使用https，确保传输中安全。</li>
+<li>加入rpx单位，隔离设备尺寸，方便开发。</li>
+</ul>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>分包加载</p>
+<blockquote>
+<p><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages.html" target="_blank" rel="noopener">https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages.html</a></p>
 </blockquote>
-<h3 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h3><blockquote>
-<p>array.reverse()<br>array.sort()<br>//sort方法比较的是字符串<br>//通过比较函数的返回值正负来影响排序结果<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value2-value1;</span><br><span class="line">&#125;</span><br><span class="line">array.sort(compare)</span><br></pre></td></tr></table></figure></p>
+<p>setData原理</p>
+<blockquote>
+<p>setData函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的this.data的值（同步）。逻辑层需要更改界面时，只要把修改后的 data 通过 setData 传到渲染层。传输的数据，会转换为字符串形式传递，故应尽量避免传递大量数据。渲染层会根据前面提到的渲染机制重新生成 VD（虚拟 DOM）树，并更新到对应的 DOM 树上，引起界面变化。</p>
 </blockquote>
-<h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><blockquote>
-<p>array.concat()<br>//不影响原来数组<br>array.slice()<br>//不影响原来数组<br>array.splice()<br>//删除（0,2）<br>//插入（2，0，’a’）<br>//替换（2，1，’a’)</p>
+<p>一次交互，通过setDATA引起页面变化，要进过4次通信，强交互的场景会出现卡顿，所以引入原生组件</p>
+<blockquote>
+<p>渲染层 -&gt; Native（点击事件）。<br>Native -&gt; 逻辑层（点击事件）。<br>逻辑层 -&gt; Native（setData）。<br>Native -&gt; 渲染层（setData）。</p>
 </blockquote>
-<h3 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h3><blockquote>
-<p>array.indexOf()<br>array.lastIndexOf()</p>
-</blockquote>
-<h3 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h3><blockquote>
-<p>array.every()<br>array.some()<br>array.foreach()<br>array.map()<br>array.filter()<br>//接受一个函数function（item,index,array）</p>
-</blockquote>
-<h3 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h3><blockquote>
-<p>array.reduce()<br>array.reduceRight()<br>//这两个方法都会迭代数组所有项<br>//接受一个函数function（prev,cur,index,array）</p>
-</blockquote>
-<h3 id="ES6新方法"><a href="#ES6新方法" class="headerlink" title="ES6新方法"></a>ES6新方法</h3><blockquote>
-<p>array.find()<br>array.findIndex()<br>//接受一个回调函数，find()返回查找到的值，findIndex()返回索引<br>array.fill()<br>//接受三个参数:  fill(填充值，[  , ) )<br>array.copyWithin()<br>//接受两个参数：粘贴索引值，复制索引值</p>
-</blockquote>
+<p>数据预加载 先App中请求数据,在index.js使用数据</p>
+<h2 id="安全与管控"><a href="#安全与管控" class="headerlink" title="安全与管控"></a>安全与管控</h2><ul>
+<li>客户端系统有 JavaScript 的解释引擎，则可以创建一个单独的线程去执行 JavaScript，这个环境下只执行有关小程序业务逻辑的代码。界面渲染相关的任务呢，就丢到 webview 线程里面，通过逻辑层代码去控制渲染哪些界面。</li>
+<li>把开发者的 JS 逻辑代码放到单独的线程去运行，因为不在 Webview 线程里，所以这个环境没有 Webview 任何接口，自然的开发者就没法直接操作 DOM，也就没法动态去更改界面或者抓取页面数据。</li>
+<li>同时小程序不支持动态载入脚本，XSS 漏洞自然也无缝可钻</li>
+<li>官方审核</li>
+<li>每个微信小程序需要事先设置一个通讯域名，小程序只可以跟指定的域名与进行网络通信</li>
+<li>须使用 HTTPS 发起网络请求。请求时系统会对服务器域名使用的 HTTPS 证书进行校验，如果校验失败，则请求不能成功发起。</li>
+<li>token机制避免CSRF 在小程序中调用wx.login()，能拿到一个code作为用户登录凭证（有效期五分钟）。在开发者服务器后台，开发者可使用code换取openid和session_key等信息（code只能使用一次）</li>
+</ul>
 
       
     </div>
@@ -512,7 +567,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yinzhuo.online/Javascript/3/" title="Javascript数组方法总结">http://yinzhuo.online/Javascript/3/</a>
+    <a href="http://yinzhuo.online/xcx/9/" title="微信小程序底层原理调研">http://yinzhuo.online/xcx/9/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -535,11 +590,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Javascript/" rel="tag"><i class="fa fa-tag"></i> Javascript</a>
-          
             <a href="/tags/笔记/" rel="tag"><i class="fa fa-tag"></i> 笔记</a>
           
-            <a href="/tags/Javascript高级程序设计/" rel="tag"><i class="fa fa-tag"></i> Javascript高级程序设计</a>
+            <a href="/tags/小程序/" rel="tag"><i class="fa fa-tag"></i> 小程序</a>
           
         </div>
       
@@ -552,8 +605,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Javascript/4/" rel="next" title="Javascript字符串方法总结">
-                <i class="fa fa-chevron-left"></i> Javascript字符串方法总结
+              <a href="/Internet/8/" rel="next" title="从从输入URL到页面加载经历了什么（更新中）">
+                <i class="fa fa-chevron-left"></i> 从从输入URL到页面加载经历了什么（更新中）
               </a>
             
           </div>
@@ -561,10 +614,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/Javascript/5/" rel="prev" title="SVG和Canvas">
-                SVG和Canvas <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -751,7 +800,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#检测数组"><span class="nav-number">1.</span> <span class="nav-text">检测数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换方法"><span class="nav-number">2.</span> <span class="nav-text">转换方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈方法"><span class="nav-number">3.</span> <span class="nav-text">栈方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列方法"><span class="nav-number">4.</span> <span class="nav-text">队列方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重排序方法"><span class="nav-number">5.</span> <span class="nav-text">重排序方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作方法"><span class="nav-number">6.</span> <span class="nav-text">操作方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位置方法"><span class="nav-number">7.</span> <span class="nav-text">位置方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代方法"><span class="nav-number">8.</span> <span class="nav-text">迭代方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并方法"><span class="nav-number">9.</span> <span class="nav-text">归并方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6新方法"><span class="nav-number">10.</span> <span class="nav-text">ES6新方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么小程序比较快？"><span class="nav-number">1.</span> <span class="nav-text">为什么小程序比较快？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是wxs"><span class="nav-number">2.</span> <span class="nav-text">什么是wxs?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双线程"><span class="nav-number">3.</span> <span class="nav-text">双线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行机制"><span class="nav-number">4.</span> <span class="nav-text">运行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#view"><span class="nav-number">5.</span> <span class="nav-text">view</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webview预加载"><span class="nav-number">6.</span> <span class="nav-text">webview预加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑层"><span class="nav-number">7.</span> <span class="nav-text">逻辑层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数据绑定-Binding"><span class="nav-number">7.1.</span> <span class="nav-text">数据绑定 Binding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期-Life-Cycle"><span class="nav-number">7.2.</span> <span class="nav-text">生命周期 Life Cycle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">7.3.</span> <span class="nav-text">API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由-Router"><span class="nav-number">7.4.</span> <span class="nav-text">路由 Router</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小程序优点"><span class="nav-number">8.</span> <span class="nav-text">小程序优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-number">9.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全与管控"><span class="nav-number">10.</span> <span class="nav-text">安全与管控</span></a></li></ol></div>
             
 
           </div>
