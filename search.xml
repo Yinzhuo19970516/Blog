@@ -8,8 +8,8 @@
         <category>计算机网络</category>
       </categories>
       <tags>
-        <tag>笔记</tag>
         <tag>面试</tag>
+        <tag>笔记</tag>
         <tag>HTTP</tag>
       </tags>
   </entry>
@@ -22,8 +22,8 @@
       </categories>
       <tags>
         <tag>Javascript</tag>
-        <tag>Javascript高级程序设计</tag>
         <tag>面试</tag>
+        <tag>Javascript高级程序设计</tag>
       </tags>
   </entry>
   <entry>
@@ -35,9 +35,9 @@
       </categories>
       <tags>
         <tag>Javascript</tag>
+        <tag>面试</tag>
         <tag>玄学</tag>
         <tag>笔记</tag>
-        <tag>面试</tag>
         <tag>你不知道的js</tag>
       </tags>
   </entry>
