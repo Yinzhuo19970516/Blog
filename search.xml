@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[前端视频资源汇总(不定期更新)]]></title>
+    <url>%2Fresource%2F11%2F</url>
+    <content type="text"><![CDATA[收集的前端视频资源汇总HTML&amp;&amp;CSS&amp;&amp;Javascript 初级WEB前端工程师 链接：https://pan.baidu.com/s/1coocm5XHgmJ22lOzBvh0ZA 密码：swp7 js基础 链接：https://pan.baidu.com/s/1aShlU6_Ye2HuLob-3YLFww 密码：vrz1 js设计模式系统讲解与应用 链接：https://pan.baidu.com/s/1uqrHCzV-Dk0szEwrsipTtA 密码：efzt 全面讲解CSS 链接：https://pan.baidu.com/s/1pVr9TclO3zgKnzRhuNpwTQ 密码：l8fz Vue.js Vue.js源码解析 链接：https://pan.baidu.com/s/1FdKwB_S5G8qGnWZEbYoH2w 密码：lwrb Vue去哪儿 链接：https://pan.baidu.com/s/1Mcp_0IBr4Ry9neHxsbC-yA 密码：4zmb 开发移动端音乐WebApp 链接：https://pan.baidu.com/s/1z1X1_hU4Axnd4pDYfUmtmw 密码：djnx 饿了么 链接：https://pan.baidu.com/s/1IrviUw3iqfjLO4IDP_pjjA 密码：ywjw vue+node音乐播放器 链接：https://pan.baidu.com/s/1AnA9GOfaCOxhf7m6QlFbvw 密码：bc17 小程序小游戏汇总 汇总 链接：https://pan.baidu.com/s/13FZRwKAkFJL4EuxCe0e-QQ 密码：5iqk jq jq源码视频 链接：https://pan.baidu.com/s/1jdgEBCjGBwEUQjOTCFnSew 密码：mkrh 其他 HTTP 链接：https://pan.baidu.com/s/1o7dbA0fHJnKMEI-Za4NUUA 密码：aoa9 v8 引擎 链接：https://pan.baidu.com/s/1IMjMAQgjRIRlwzV9CY1yaw 密码：3fwo]]></content>
+      <categories>
+        <category>resource</category>
+      </categories>
+      <tags>
+        <tag>资源</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[一点两点三四点]]></title>
     <url>%2Fsecret%2F10%2F</url>
     <content type="text"><![CDATA[几点实习期间的感悟1.当对技术熟悉的情况下，拿到原型图先想好自己的页面，准备切哪些图，该怎么写，用什么插件，怎么布局之类。但是如果技术不熟悉，就先上手开始写。2.css样式文件不能太复杂，能提出的公有样式尽量提出来。同类样式可以提出来一个新的文件，进行引入，相同的样式写一遍，只修改不同部分，颜色之类的公有样式提出一个新的文件夹，对之前的代码有优化的想法，请立即重构。3.尽量避免前景图，多用背景图，多采用flex布局。4.不耻下问，学无止境。]]></content>
@@ -59,9 +71,9 @@
       <tags>
         <tag>Javascript</tag>
         <tag>面试</tag>
-        <tag>玄学</tag>
         <tag>笔记</tag>
         <tag>你不知道的js</tag>
+        <tag>玄学</tag>
       </tags>
   </entry>
   <entry>
