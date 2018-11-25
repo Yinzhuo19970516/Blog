@@ -120,11 +120,11 @@
 <meta property="og:url" content="http://yinzhuo.online/blog/Javascript/3/index.html">
 <meta property="og:site_name" content="YinZhuo&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-6/78457445.jpg">
-<meta property="og:updated_time" content="2018-11-25T12:08:08.824Z">
+<meta property="og:image" content="https://www.superbed.cn/pic/5bf17f7bc4ff9e24bf0ee12c">
+<meta property="og:updated_time" content="2018-11-25T14:24:46.358Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript数组方法总结">
-<meta name="twitter:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-6/78457445.jpg">
+<meta name="twitter:image" content="https://www.superbed.cn/pic/5bf17f7bc4ff9e24bf0ee12c">
 
 
 
@@ -368,8 +368,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T13:53:54+08:00">
-                2018-10-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T21:45:28+08:00">
+                2018-11-25
               </time>
             
 
@@ -384,7 +384,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-25T20:08:08+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-25T22:24:46+08:00">
                 2018-11-25
               </time>
             
@@ -471,46 +471,36 @@
       
 
       
-        <p><img src="http://pg0douyd3.bkt.clouddn.com/18-10-6/78457445.jpg" alt="封面"></p>
+        <p><img src="https://www.superbed.cn/pic/5bf17f7bc4ff9e24bf0ee12c" style="width:600px; display:block;"></p>
 <a id="more"></a>
-<p>###检测数组</p>
-<blockquote>
+<h3 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h3><blockquote>
 <p>array.isArray()</p>
 </blockquote>
-<p>###转换方法</p>
-<blockquote>
+<h3 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h3><blockquote>
 <p>array.toString()<br>array.valueOf()<br>array.join()<br>//join使用不同的分隔符来构建字符串<br>//若不给join传入任何值，或者给它传入undefined，则使用逗号作为分隔符</p>
 </blockquote>
-<p>###栈方法</p>
-<blockquote>
+<h3 id="栈方法"><a href="#栈方法" class="headerlink" title="栈方法"></a>栈方法</h3><blockquote>
 <p>array.push(“a”)<br>array.pop()<br>//调用pop()时，它会返回数组的最后一项</p>
 </blockquote>
-<p>###队列方法</p>
-<blockquote>
+<h3 id="队列方法"><a href="#队列方法" class="headerlink" title="队列方法"></a>队列方法</h3><blockquote>
 <p>array.shift()<br>//调用shift()时，它会返回数组的第一项<br>array.unshift(“b”)</p>
 </blockquote>
-<p>###重排序方法</p>
-<blockquote>
+<h3 id="重排序方法"><a href="#重排序方法" class="headerlink" title="重排序方法"></a>重排序方法</h3><blockquote>
 <p>array.reverse()<br>array.sort()<br>//sort方法比较的是字符串<br>//通过比较函数的返回值正负来影响排序结果<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">value1, value2</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value2-value1;</span><br><span class="line">&#125;</span><br><span class="line">array.sort(compare)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p>###操作方法</p>
-<blockquote>
+<h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><blockquote>
 <p>array.concat()<br>//不影响原来数组<br>array.slice()<br>//不影响原来数组<br>array.splice()<br>//删除（0,2）<br>//插入（2，0，’a’）<br>//替换（2，1，’a’)</p>
 </blockquote>
-<p>###位置方法</p>
-<blockquote>
+<h3 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h3><blockquote>
 <p>array.indexOf()<br>array.lastIndexOf()</p>
 </blockquote>
-<p>###迭代方法</p>
-<blockquote>
+<h3 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h3><blockquote>
 <p>array.every()<br>array.some()<br>array.foreach()<br>array.map()<br>array.filter()<br>//接受一个函数function（item,index,array）</p>
 </blockquote>
-<p>###归并方法</p>
-<blockquote>
+<h3 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h3><blockquote>
 <p>array.reduce()<br>array.reduceRight()<br>//这两个方法都会迭代数组所有项<br>//接受一个函数function（prev,cur,index,array）</p>
 </blockquote>
-<p>###ES6新方法</p>
-<blockquote>
+<h3 id="ES6新方法"><a href="#ES6新方法" class="headerlink" title="ES6新方法"></a>ES6新方法</h3><blockquote>
 <p>array.find()<br>array.findIndex()<br>//接受一个回调函数，find()返回查找到的值，findIndex()返回索引<br>array.fill()<br>//接受三个参数:  fill(填充值，[  , ) )<br>array.copyWithin()<br>//接受两个参数：粘贴索引值，复制索引值</p>
 </blockquote>
 
@@ -572,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/Javascript/4/" rel="next" title="Javascript字符串方法总结">
-                <i class="fa fa-chevron-left"></i> Javascript字符串方法总结
+              <a href="/blog/Javascript/2/" rel="next" title="神奇的Javascript">
+                <i class="fa fa-chevron-left"></i> 神奇的Javascript
               </a>
             
           </div>
@@ -582,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/Javascript/5/" rel="prev" title="SVG和Canvas">
-                SVG和Canvas <i class="fa fa-chevron-right"></i>
+              <a href="/blog/Javascript/4/" rel="prev" title="Javascript字符串方法总结">
+                Javascript字符串方法总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -641,8 +631,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -661,7 +660,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -672,7 +671,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -683,7 +682,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -753,6 +752,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#检测数组"><span class="nav-number">1.</span> <span class="nav-text">检测数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转换方法"><span class="nav-number">2.</span> <span class="nav-text">转换方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈方法"><span class="nav-number">3.</span> <span class="nav-text">栈方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#队列方法"><span class="nav-number">4.</span> <span class="nav-text">队列方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重排序方法"><span class="nav-number">5.</span> <span class="nav-text">重排序方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作方法"><span class="nav-number">6.</span> <span class="nav-text">操作方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位置方法"><span class="nav-number">7.</span> <span class="nav-text">位置方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#迭代方法"><span class="nav-number">8.</span> <span class="nav-text">迭代方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并方法"><span class="nav-number">9.</span> <span class="nav-text">归并方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6新方法"><span class="nav-number">10.</span> <span class="nav-text">ES6新方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -794,7 +809,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">3.3k</span>
+    <span title="Site words total count">5.6k</span>
   
 </div>
 

@@ -1,11 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[从从输入URL到页面加载经历了什么（更新中）]]></title>
-    <url>%2Fblog%2F%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%2F8%2F</url>
-    <content type="text"><![CDATA[1.DNS解析&nbsp;&nbsp;&nbsp;&nbsp;网址转为IP地址，是一个递归查询的过程&nbsp;&nbsp;&nbsp;&nbsp;DNS优化：DNS缓存（多级缓存）2.TCP连接3.发送http请求&nbsp;&nbsp;&nbsp;&nbsp;请求报文由三部分组成：请求行，请求报头和请求正文&nbsp;&nbsp;&nbsp;&nbsp;请求头： Method Request-URL HTTP-Version CRLFeg: GET index.html HTTP/1.1 &nbsp;&nbsp;&nbsp;&nbsp;请求报头： Accept:可以处理的文件类型User-Agent:浏览器版本和操作系统Accept-Encoding:可以处理的压缩，编码格式：gizpHost:主机Cache-ControlConnection:keep-alive长连接Cookie//post请求时Referer:访问的来源网址，跟踪来访者的来源和记录content-length: &nbsp;&nbsp;&nbsp;&nbsp;请求正文：&nbsp;&nbsp;&nbsp;&nbsp;当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中4.服务器处理请求并返回http报文&nbsp;&nbsp;&nbsp;&nbsp;响应报文由三部分组成：状态码，响应报头和响应报文&nbsp;&nbsp;&nbsp;&nbsp;响应报头 server:服务器版本DateContent-type:请求类型(text/html,image/gif)Transfer-Encoding: chuncked ： 分块传输Connection：keep-aliveCache-control: private //会使用缓存Expires:缓存过期时间Content-Encoding: gizp //图片资源一般不会压缩X-UA-Compatible:浏览器兼容字段Content-lengthKeep-alive: timeout =5 , max =100 &nbsp;&nbsp;&nbsp;&nbsp;响应报文&nbsp;&nbsp;&nbsp;&nbsp;HTML，css，js，图片5.浏览器解析渲染页面&nbsp;&nbsp;&nbsp;&nbsp;dom树&nbsp;&nbsp;&nbsp;&nbsp;渲染树（重排和重绘）&nbsp;&nbsp;&nbsp;&nbsp;js解析：一个主线程+一个任务队列6.链接结束]]></content>
+    <title><![CDATA[小程序架构原理调研]]></title>
+    <url>%2Fblog%2Fxcx%2F9%2F</url>
+    <content type="text"><![CDATA[为什么小程序比较快？安装包缓存分包加载双线程webview预加载native组件 什么是wxs? https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/ 与 WXML 是在同一个线程运行的，避免了跨线程通信的开销 双线程 逻辑层：创建一个单独的线程去执行 JavaScript，在这个环境下执行的都是有关小程序业务逻辑的代码 渲染层：界面渲染相关的任务全都在 WebView 线程里执行，通过逻辑层代码去控制渲染哪些界面。一个小程序存在多个界面，所以渲染层存在多个 WebView 线程 双线程通信 在渲染层把 WXML 转化成对应的 JS 对象。 在逻辑层发生数据变更的时候，通过宿主环境提供的 setData 方法把数据从逻辑层传递到 Native，再转发到渲染层。 经过对比前后差异，把差异应用在原来的 DOM 树上，更新界面。 优点：不会阻塞，可以有多个webview,页面切换更流畅 缺点： 在 page-frame 上无法调用业务 JS。 跨线程通信的成本很高，不适合需要频繁通信的场景。 业务 JS 无法直接控制 DOM。 所以引入了wxs 运行机制冷启动 热启动更新机制 冷启动时如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要等下一次冷启动才会应用上。 如果需要马上应用最新版本，可以使用 wx.getUpdateManager API 进行处理。 运行机制 小程序没有重启的概念 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后（目前是5分钟）会被微信主动销毁 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁 view wcc index.wxml wcsc index.wxss component 使用Polymer框架实现Web Component Native Component 目前Native实现的组件有canvas video map textarea;Native组件层在WebView层之上 webview预加载每次小程序进入除了当前页面,Native预先额外加载一个WebView当打开指定页面时，用默认数据直接渲染，请求数据回来时局部更新返回显示历史View退出小程序，View状态不销毁 逻辑层数据绑定 Binding 单向数据流 识别哪个UI元素被绑定了相应的对象。 监视对象状态的变化。 将所有变化传播到绑定的视图上。 生命周期 Life Cycle 渲染层和逻辑层之间通信，是通过 Native 转发实现的。逻辑层通过 Page 实例的setData方法传递数据到渲染层。由于需要两个线程的一些通信消耗，为了提高性能，每次只设置需要改变的最小单位数据。生命周期顺序：onLoad -&gt; onShow -&gt; onReady。 API通过WeixinJSBridge和Native 进行通信 路由 Router小程序优点 提前新建WebView，准备新页面渲染。 View层和逻辑层分离，通过数据驱动，不直接操作DOM。 使用Virtual DOM，进行局部更新。 全部使用https，确保传输中安全。 加入rpx单位，隔离设备尺寸，方便开发。 优化分包加载 https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages.html setData原理 setData函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的this.data的值（同步）。逻辑层需要更改界面时，只要把修改后的 data 通过 setData 传到渲染层。传输的数据，会转换为字符串形式传递，故应尽量避免传递大量数据。渲染层会根据前面提到的渲染机制重新生成 VD（虚拟 DOM）树，并更新到对应的 DOM 树上，引起界面变化。 一次交互，通过setDATA引起页面变化，要进过4次通信，强交互的场景会出现卡顿，所以引入原生组件 渲染层 -&gt; Native（点击事件）。Native -&gt; 逻辑层（点击事件）。逻辑层 -&gt; Native（setData）。Native -&gt; 渲染层（setData）。 数据预加载 先App中请求数据,在index.js使用数据 安全与管控 客户端系统有 JavaScript 的解释引擎，则可以创建一个单独的线程去执行 JavaScript，这个环境下只执行有关小程序业务逻辑的代码。界面渲染相关的任务呢，就丢到 webview 线程里面，通过逻辑层代码去控制渲染哪些界面。 把开发者的 JS 逻辑代码放到单独的线程去运行，因为不在 Webview 线程里，所以这个环境没有 Webview 任何接口，自然的开发者就没法直接操作 DOM，也就没法动态去更改界面或者抓取页面数据。 同时小程序不支持动态载入脚本，XSS 漏洞自然也无缝可钻 官方审核 每个微信小程序需要事先设置一个通讯域名，小程序只可以跟指定的域名与进行网络通信 须使用 HTTPS 发起网络请求。请求时系统会对服务器域名使用的 HTTPS 证书进行校验，如果校验失败，则请求不能成功发起。 token机制避免CSRF 在小程序中调用wx.login()，能拿到一个code作为用户登录凭证（有效期五分钟）。在开发者服务器后台，开发者可使用code换取openid和session_key等信息（code只能使用一次）]]></content>
       <categories>
-        <category>计算机网络</category>
+        <category>xcx</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[前端视频资源收集]]></title>
+    <url>%2Fblog%2Fresource%2F11%2F</url>
+    <content type="text"><![CDATA[只分享些要钱的Vue源码解读 链接：https://pan.baidu.com/s/1yLmaYiZOm03DeUsvo8qKTw 密码：cxu5 js设计模式解读 链接：https://pan.baidu.com/s/1Be-II3JSRk5S8Xza92bHNg 密码：sihn jq源码解读 链接：https://pan.baidu.com/s/1L6-sva9p85CYfrN2ZLoaNw 密码：ba3g 小程序汇总 链接：https://pan.baidu.com/s/1wJtqc1lrHLDQbYRPFmlpxw 密码：rxic V8引擎 链接：https://pan.baidu.com/s/1hpoZoxaUmu2MWEGMplgxFw 密码：oc3d 前端面试 链接：https://pan.baidu.com/s/1dL3-bCons6uCGm1loICWCw 密码：qk34 开课吧 链接：https://pan.baidu.com/s/181f9bBkUIDXomRGv5UYUyg 密码：xz88链接：https://pan.baidu.com/s/1W9x8JRhM8hBksBTcnmq5gg 密码：0e9d]]></content>
+      <categories>
+        <category>resource</category>
+      </categories>
+      <tags>
+        <tag>前端</tag>
+        <tag>资源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[一点两点三四点]]></title>
+    <url>%2Fblog%2Fsecret%2F10%2F</url>
+    <content type="text"><![CDATA[几点实习期间的感悟1.当对技术熟悉的情况下，拿到原型图先想好自己的页面，准备切哪些图，该怎么写，用什么插件，怎么布局之类。但是如果技术不熟悉，就先上手开始写。2.css样式文件不能太复杂，能提出的公有样式尽量提出来。同类样式可以提出来一个新的文件，进行引入，相同的样式写一遍，只修改不同部分，颜色之类的公有样式提出一个新的文件夹，对之前的代码有优化的想法，请立即重构。3.尽量避免前景图，多用背景图，多采用flex布局。4.不耻下问，学无止境界]]></content>
+      <categories>
+        <category>secret</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[从从输入URL到页面加载经历了什么（更新中）]]></title>
+    <url>%2Fblog%2FInternet%2F8%2F</url>
+    <content type="text"><![CDATA[1.DNS解析网址转为IP地址，是一个递归查询的过程 url:统一资源定位符 scheme://host.domain:port/path/filename DNS协议通过域名查找IP地址，域名解析就是在DNS记录一条信息记录DNS优化：DNS缓存（多级缓存）* 浏览器缓存，操作系统缓存，路由缓存。2.TCP连接TCP三次握手客户端=&gt;服务端 ：我要发送请求了服务端=&gt;客户端：我准备好了，发吧客户端=&gt;服务端：（握手结束），我马上发了，准备接受“三次握手”的目的：为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误”。3.发送http请求请求报文由三部分组成：请求行，请求报头和请求正文请求行： 请求方法、URL、协议版本Method Request-URL HTTP-Version CRLFeg: GET index.html HTTP/1.1 请求报头： Accept:可以处理的文件类型User-Agent:浏览器版本和操作系统Accept-Encoding:可以处理的压缩，编码格式：gizpHost:主机Cache-ControlConnection:keep-alive长连接，一个连接可以发多个请求(HTTP/1.1增加的)Cookie//post请求时Referer:访问的来源网址，跟踪来访者的来源和记录content-length: 请求正文：当使用POST, PUT等方法时，通常需要客户端向服务器传递数据。这些数据就储存在请求正文中4.服务器处理请求并返回http报文MVC 后台处理阶段首先浏览器发送过来的请求先经过控制器，控制器进行逻辑处理和请求分发，接着会调用模型，这一阶段模型会获取 redis db 以及 MySQL 的数据，获取数据后将渲染好的页面，响应信息会以响应报文的形式返回给客户端，最后浏览器通过渲染引擎将网页呈现在用户面前。响应报文由三部分组成：响应行，响应报头和响应报文响应行：协议版本，状态码，状态码描述响应报头 server:服务器版本DateContent-type:请求类型(text/html,image/gif)Transfer-Encoding: chuncked ： 分块传输Connection：keep-aliveCache-control: private //会使用缓存Expires:缓存过期时间Content-Encoding: gizp //图片资源一般不会压缩X-UA-Compatible:浏览器兼容字段Content-lengthKeep-alive: timeout =5 , max =100 响应报文HTML，css，js，图片5.浏览器解析渲染页面dom树dom树解析：深度优先遍历，若遇到 script 标签，则 DOM 树的构建会暂停，直至脚本执行完毕。css规则树解析 CSS 规则树时 js 执行将暂停，直至 CSS 规则树就绪。浏览器在 CSS 规则树生成之前不会进行渲染。渲染树（重排和重绘）根据渲染树计算每一个节点信息绘制页面js解析：一个主线程+一个任务队列6.断开连接TCP四次握手 第一次挥手：由浏览器发起的，发送给服务器，我请求报文发送完了，你准备关闭吧 第二次挥手：由服务器发起的，告诉浏览器，我请求报文接受完了，我准备关闭了，你也准备吧 第三次挥手：由服务器发起，告诉浏览器，我响应报文发送完了，你准备关闭吧 第四次挥手：由浏览器发起，告诉服务器，我响应报文接受完了，我准备关闭了，你也准备吧]]></content>
+      <categories>
+        <category>Internet</category>
       </categories>
       <tags>
         <tag>面试</tag>
@@ -16,7 +50,7 @@
   <entry>
     <title><![CDATA[Javascript中事件处理程序]]></title>
     <url>%2Fblog%2FJavascript%2F7%2F</url>
-    <content type="text"><![CDATA[1、在DOM中，直接用onXXX=”fun();”进行绑定（HTML中直接绑定） 事件绑定事件处理程序var fun = function(){……..}；移除事件处理程序fun = function(){} 优点：简单方便缺点：js和html耦合度太高，每次修改函数要变动两个地方。存在一个时差问题，用户可能会在HTML元素一出现就触发事件，但是事件处理程序没有加载好 2、在Javascript代码中用 DOM对象.onXXX=fun 进行绑定（通过js指定事件处理程序） document.getElementById(“btn”).onclick = fun;//此处绑定的是函数名移除事件处理程序document.getElementById(‘btn’).onclick = null; 优点：简单方便，有跨浏览器优势缺点：存在时差问题3、用 DOM对象.attachEvent(“onXXX”,fun) 进行绑定(IE事件处理程序) var a = document.getElementById(“btn”)a.attachEvent(“onclick”, fun);// 移除句柄a.detachEvent(‘onclick’, fun);接受两个参数，一个事件处理程序名称，一个事件处理函数匿名函数能被移除，参数必须相同） 优点：可以给一个元素添加多个事件处理程序，所有事件都会被添加到冒泡阶段，事件执行顺序逆序执行4、DOM2级事件处理程序 var a = document.getElementById(‘btn’);a.addEventListener(‘click’,function(){ });// event: 事件名称// function: 事件函数// boolean: false | true, true 为事件捕获, false 为事件冒泡(默认);Ele.addEventListener(event,function[,boolean]); // 添加句柄Ele.removeEventListener(event,function[,boolean]); // 移除句柄（匿名函数能被移除，参数必须相同） 优点：可以给一个添加多个事件处理程序，事件执行顺序顺序执行5、跨浏览器事件处理程序如果我们既要支持IE的事件处理方法，又要支持 DOM 2级事件，那么就要封装一个跨浏览器的事件处理函数，如果支持 DOM 2级事件，就用addEventListener，否则就用attachEvent。例子如下123456789101112131415161718192021222324252627282930//跨浏览器事件处理程序var eventUtil = &#123; // 添加句柄 addHandler: function(element, type, handler)&#123; if(element.addEventListener)&#123; element.addEventListener(type, handler, false); &#125;else if(element.attachEvent)&#123; element.attachEvent('on' + type, handler); &#125;else&#123; element['on' + type] = handler; &#125; &#125;, // 删除句柄 removeHandler: function(element, type, handler)&#123; if(element.removeEventListener)&#123; element.removeEventListener(type, handler, false); &#125;else if(element.detachEvent)&#123; element.detachEvent('on' + type, handler); &#125;else&#123; element['on' + type] = null; &#125; &#125;&#125;;var oBtn = document.getElementById('btn');function evtFn()&#123; alert('hello world');&#125;eventUtil.addHandler(oBtn, 'click', evtFn);eventUtil.removeHandler(oBtn, 'click', evtFn);]]></content>
+    <content type="text"><![CDATA[1、在DOM中，直接用onXXX=”fun();”进行绑定（HTML中直接绑定）1&lt;button id = &quot;btn&quot; onclick =&quot;fun()&quot;&gt;事件绑定&lt;/button&gt; 事件处理程序var fun = function(){……..}；移除事件处理程序fun = function(){} 优点：简单方便缺点：js和html耦合度太高，每次修改函数要变动两个地方。存在一个时差问题，用户可能会在HTML元素一出现就触发事件，但是事件处理程序没有加载好 2、在Javascript代码中用 DOM对象.onXXX=fun 进行绑定（通过js指定事件处理程序） document.getElementById(“btn”).onclick = fun;//此处绑定的是函数名移除事件处理程序document.getElementById(‘btn’).onclick = null; 优点：简单方便，有跨浏览器优势缺点：存在时差问题3、用 DOM对象.attachEvent(“onXXX”,fun) 进行绑定(IE事件处理程序) var a = document.getElementById(“btn”)a.attachEvent(“onclick”, fun);// 移除句柄a.detachEvent(‘onclick’, fun);接受两个参数，一个事件处理程序名称，一个事件处理函数匿名函数能被移除，参数必须相同） 优点：可以给一个元素添加多个事件处理程序，所有事件都会被添加到冒泡阶段，事件执行顺序逆序执行4、DOM2级事件处理程序 var a = document.getElementById(‘btn’);a.addEventListener(‘click’,function(){ });// event: 事件名称// function: 事件函数// boolean: false | true, true 为事件捕获, false 为事件冒泡(默认);Ele.addEventListener(event,function[,boolean]); // 添加句柄Ele.removeEventListener(event,function[,boolean]); // 移除句柄（匿名函数能被移除，参数必须相同） 优点：可以给一个添加多个事件处理程序，事件执行顺序顺序执行5、跨浏览器事件处理程序如果我们既要支持IE的事件处理方法，又要支持 DOM 2级事件，那么就要封装一个跨浏览器的事件处理函数，如果支持 DOM 2级事件，就用addEventListener，否则就用attachEvent。例子如下123456789101112131415161718192021222324252627282930//跨浏览器事件处理程序var eventUtil = &#123; // 添加句柄 addHandler: function(element, type, handler)&#123; if(element.addEventListener)&#123; element.addEventListener(type, handler, false); &#125;else if(element.attachEvent)&#123; element.attachEvent('on' + type, handler); &#125;else&#123; element['on' + type] = handler; &#125; &#125;, // 删除句柄 removeHandler: function(element, type, handler)&#123; if(element.removeEventListener)&#123; element.removeEventListener(type, handler, false); &#125;else if(element.detachEvent)&#123; element.detachEvent('on' + type, handler); &#125;else&#123; element['on' + type] = null; &#125; &#125;&#125;;var oBtn = document.getElementById('btn');function evtFn()&#123; alert('hello world');&#125;eventUtil.addHandler(oBtn, 'click', evtFn);eventUtil.removeHandler(oBtn, 'click', evtFn);]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -29,22 +63,22 @@
   <entry>
     <title><![CDATA[Javascript运算符优先级和结合性]]></title>
     <url>%2Fblog%2FJavascript%2F6%2F</url>
-    <content type="text"><![CDATA[##先放上mdn上关于运算符优先级关联性的汇总表 ###下面的表将所有运算符按照优先级的不同从高到低排列。 ###有一道题（摘自你不知道的JS(中卷））123456var a =42;var b = "foo";var c = false;var d = a &amp;&amp; b || c ? c || b ? a : c &amp;&amp; b : a;d; //42 ####通过查询表格，我们可以把上面代码分解： var d = ((a &amp;&amp; b) || c ) ? (( c || b ) ? a :(c &amp;&amp; b)) : a | 6 | [逻辑与] | 从左到右 | … &amp;&amp; … || 5 | [逻辑或] | 从左到右 | … || … || 4 | [条件运算符] | 从右到左 | … ? … : … | ####逐一执行 (a &amp;&amp; b) 结果为：’’foo”“foo” || c 结果为 ：”foo”第一个？中，”foo”为真值(c || b)结果为：”foo”第二个？中，”foo”为真值a的值为42最后结果为42 ###还有一道题（摘自segmentfault）1234567891011121314151617181920212223242526function Foo() &#123; getName = function () &#123; alert(1); &#125;; return this;&#125;Foo.getName = function () &#123; alert(2);&#125;;Foo.prototype.getName = function () &#123; alert(3);&#125;;var getName = function () &#123; alert(4);&#125;;function getName() &#123; alert(5);&#125;Foo.getName(); //2getName(); //4Foo().getName(); //1getName(); //1new Foo.getName(); //2new Foo().getName(); //3new new Foo().getName(); //3 执行Foo.getName()这个函数，输出2先执行function getName(),在执行var getName = function，输出4，进行了一次覆盖执行Foo()里的getName(),因为没有用var定义，所以该函数是定义在全局的，this也指向windows,此时覆盖掉以前的4，输出1执行全局的getName, 输出1new (Foo.getName)（) .操作符优先级高于new(不带参数)优先级，输出2(new Foo()).getName(); 如果是new (Foo().getName)()，那么在执行Foo()时，它是一个函数调用，优先级低于带参数的new，因此这样不行。那么只能是(new Foo()).getName()，输出3new((new Foo()).getName)（),输出3 ###考察对this、原型链、函数对象、函数声明提前等一系列知识。]]></content>
+    <content type="text"><![CDATA[先放上mdn上关于运算符优先级关联性的汇总表下面的表将所有运算符按照优先级的不同从高到低排列。 有一道题（摘自你不知道的JS(中卷））123456var a =42;var b = "foo";var c = false;var d = a &amp;&amp; b || c ? c || b ? a : c &amp;&amp; b : a;d; //42 通过查询表格，我们可以把上面代码分解： var d = ((a &amp;&amp; b) || c ) ? (( c || b ) ? a :(c &amp;&amp; b)) : a | 6 | [逻辑与] | 从左到右 | … &amp;&amp; … || 5 | [逻辑或] | 从左到右 | … || … || 4 | [条件运算符] | 从右到左 | … ? … : … | 逐一执行 (a &amp;&amp; b) 结果为：’’foo”“foo” || c 结果为 ：”foo”第一个？中，”foo”为真值(c || b)结果为：”foo”第二个？中，”foo”为真值a的值为42最后结果为42 还有一道题（摘自segmentfault）1234567891011121314151617181920212223242526function Foo() &#123; getName = function () &#123; alert(1); &#125;; return this;&#125;Foo.getName = function () &#123; alert(2);&#125;;Foo.prototype.getName = function () &#123; alert(3);&#125;;var getName = function () &#123; alert(4);&#125;;function getName() &#123; alert(5);&#125;Foo.getName(); //2getName(); //4Foo().getName(); //1getName(); //1new Foo.getName(); //2new Foo().getName(); //3new new Foo().getName(); //3 执行Foo.getName()这个函数，输出2先执行function getName(),在执行var getName = function，输出4，进行了一次覆盖执行Foo()里的getName(),因为没有用var定义，所以该函数是定义在全局的，this也指向windows,此时覆盖掉以前的4，输出1执行全局的getName, 输出1new (Foo.getName)（) .操作符优先级高于new(不带参数)优先级，输出2(new Foo()).getName(); 如果是new (Foo().getName)()，那么在执行Foo()时，它是一个函数调用，优先级低于带参数的new，因此这样不行。那么只能是(new Foo()).getName()，输出3new((new Foo()).getName)（),输出3 考察对this、原型链、函数对象、函数声明提前等一系列知识。]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
       <tags>
         <tag>Javascript</tag>
         <tag>面试</tag>
-        <tag>笔记</tag>
         <tag>玄学</tag>
+        <tag>笔记</tag>
         <tag>你不知道的js</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[SVG和Canvas]]></title>
     <url>%2Fblog%2FJavascript%2F5%2F</url>
-    <content type="text"><![CDATA[Canvs和SVG都是前端绘图技术 ##SVG 指可缩放矢量图形，是用于描述二维矢量图形的一种图形格式，是由万维网联盟制定的开发标准。SVG使用XML格式来定义图形。这意味着SVG DOM中的每个元素都是可用的. 所以可以为每个元素附加JavaScript事件处理器在SVG中, 每个被绘制的图像均被视为对象. 如果SVG对象的属性发生变化, 那么浏览器能够自动重现图像 ##Canvas 一个容器Canvas通过js来绘制2D图形Canvas是逐像素进行渲染的在Canvas中, 一旦图形被绘制完成, 它就不会继续得到浏览器的关注. 如果其位置发生变化, 那么整个场景也需要重新绘制, 包括任何或许已被图形覆盖的对象. ##区别 Canvas支持分辨率, SVG不支持Canvas不支持事件处理器, SVG支持Canvas只有弱的文本渲染能力, 而SVG最适合带有大型渲染区域的应用程序(比如谷歌地图)Canvas能够以.png或.jpg格式保存结果图像SVG的复杂度过高的话会减慢渲染速度(任何过度使用DOM的应用都不快)Canvas最适合图像密集型的游戏, 其中的许多对象会被频繁重绘. 而SVG不适合游戏应用Canvas是基于位图的图像,它不能够改变大小, 只能缩放显示; SVG是基于矢量的, 所以它能够很好地处理图形大小的改变 Canvas提供的功能更原始, 适合像素处理, 动态渲染和大数据量绘制; SVG功能更完善, 适合静态图片显示, 高保真文档查看和打印的应用场景绘制Canvas对象后, 不能使用脚本和CSS对它进行修改; 而SVG对象是文档对象模型的一部分, 所以可以随时使用脚本和CSS修改它们 ##位图和矢量图的优缺点 位图与分辨率无关，缩放后不会失真；位图放大会产生马赛克。位图色彩表现能力丰富；矢量图色彩简单。位图大；矢量图小。矢量图可以轻松转为位图，位图不能轻易转为矢量图。 ##绘图时交互过多选svg,绘图效率高选canvas。]]></content>
+    <content type="text"><![CDATA[Canvs和SVG都是前端绘图技术 SVG 指可缩放矢量图形，是用于描述二维矢量图形的一种图形格式，是由万维网联盟制定的开发标准。SVG使用XML格式来定义图形。这意味着SVG DOM中的每个元素都是可用的. 所以可以为每个元素附加JavaScript事件处理器在SVG中, 每个被绘制的图像均被视为对象. 如果SVG对象的属性发生变化, 那么浏览器能够自动重现图像 Canvas 一个容器Canvas通过js来绘制2D图形Canvas是逐像素进行渲染的在Canvas中, 一旦图形被绘制完成, 它就不会继续得到浏览器的关注. 如果其位置发生变化, 那么整个场景也需要重新绘制, 包括任何或许已被图形覆盖的对象. 区别 Canvas支持分辨率, SVG不支持Canvas不支持事件处理器, SVG支持Canvas只有弱的文本渲染能力, 而SVG最适合带有大型渲染区域的应用程序(比如谷歌地图)Canvas能够以.png或.jpg格式保存结果图像SVG的复杂度过高的话会减慢渲染速度(任何过度使用DOM的应用都不快)Canvas最适合图像密集型的游戏, 其中的许多对象会被频繁重绘. 而SVG不适合游戏应用Canvas是基于位图的图像,它不能够改变大小, 只能缩放显示; SVG是基于矢量的, 所以它能够很好地处理图形大小的改变 Canvas提供的功能更原始, 适合像素处理, 动态渲染和大数据量绘制; SVG功能更完善, 适合静态图片显示, 高保真文档查看和打印的应用场景绘制Canvas对象后, 不能使用脚本和CSS对它进行修改; 而SVG对象是文档对象模型的一部分, 所以可以随时使用脚本和CSS修改它们 位图和矢量图的优缺点 位图与分辨率无关，缩放后不会失真；位图放大会产生马赛克。位图色彩表现能力丰富；矢量图色彩简单。位图大；矢量图小。矢量图可以轻松转为位图，位图不能轻易转为矢量图。 绘图时交互过多选svg,绘图效率高选canvas。]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -54,9 +88,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Javascript数组方法总结]]></title>
-    <url>%2Fblog%2FJavascript%2F3%2F</url>
-    <content type="text"><![CDATA[###检测数组 array.isArray() ###转换方法 array.toString()array.valueOf()array.join()//join使用不同的分隔符来构建字符串//若不给join传入任何值，或者给它传入undefined，则使用逗号作为分隔符 ###栈方法 array.push(“a”)array.pop()//调用pop()时，它会返回数组的最后一项 ###队列方法 array.shift()//调用shift()时，它会返回数组的第一项array.unshift(“b”) ###重排序方法 array.reverse()array.sort()//sort方法比较的是字符串//通过比较函数的返回值正负来影响排序结果1234function compare(value1, value2) &#123; return value2-value1;&#125;array.sort(compare) ###操作方法 array.concat()//不影响原来数组array.slice()//不影响原来数组array.splice()//删除（0,2）//插入（2，0，’a’）//替换（2，1，’a’) ###位置方法 array.indexOf()array.lastIndexOf() ###迭代方法 array.every()array.some()array.foreach()array.map()array.filter()//接受一个函数function（item,index,array） ###归并方法 array.reduce()array.reduceRight()//这两个方法都会迭代数组所有项//接受一个函数function（prev,cur,index,array） ###ES6新方法 array.find()array.findIndex()//接受一个回调函数，find()返回查找到的值，findIndex()返回索引array.fill()//接受三个参数: fill(填充值，[ , ) )array.copyWithin()//接受两个参数：粘贴索引值，复制索引值]]></content>
+    <title><![CDATA[Javascript字符串方法总结]]></title>
+    <url>%2Fblog%2FJavascript%2F4%2F</url>
+    <content type="text"><![CDATA[字符方法 string.chartAt()srting.chartCodeAt() 字符串操作方法 srting.concat()string.slice()string.substr()//第二个参数指定的是返回的个数//会把第二参数的负值转换为0string.substring()//都对原字符串没有影响//会把所有负值参数转换为0 字符串位置方法 string.indexOf()string.lastIndexOf() trim()方法 string.trim()//删除前后空格 大小写转换方法 string.toLowerCase()string.toUpperCase() 匹配方法 string.match()string.search()string.replace()string.slice() 其他方法 localeCompare()//比较字符串fromCharCode()//字符编码转为字符串 ES6新方法 string.includes()string.startsWith()string.endsWith()//前三个只接受字符串，不接受正则表达式，可以用indexOf()string.repeat()]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -67,9 +101,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Javascript字符串方法总结]]></title>
-    <url>%2Fblog%2FJavascript%2F4%2F</url>
-    <content type="text"><![CDATA[###字符方法 string.chartAt()srting.chartCodeAt() ###字符串操作方法 srting.concat()string.slice()string.substr()//第二个参数指定的是返回的个数//会把第二参数的负值转换为0string.substring()//都对原字符串没有影响//会把所有负值参数转换为0 ###字符串位置方法 string.indexOf()string.lastIndexOf() ###trim()方法 string.trim()//删除前后空格 ###大小写转换方法 string.toLowerCase()string.toUpperCase() ###匹配方法 string.match()string.search()string.replace()string.slice() ###其他方法 localeCompare()//比较字符串fromCharCode()//字符编码转为字符串 ###ES6新方法 string.includes()string.startsWith()string.endsWith()//前三个只接受字符串，不接受正则表达式，可以用indexOf()string.repeat()]]></content>
+    <title><![CDATA[Javascript数组方法总结]]></title>
+    <url>%2Fblog%2FJavascript%2F3%2F</url>
+    <content type="text"><![CDATA[检测数组 array.isArray() 转换方法 array.toString()array.valueOf()array.join()//join使用不同的分隔符来构建字符串//若不给join传入任何值，或者给它传入undefined，则使用逗号作为分隔符 栈方法 array.push(“a”)array.pop()//调用pop()时，它会返回数组的最后一项 队列方法 array.shift()//调用shift()时，它会返回数组的第一项array.unshift(“b”) 重排序方法 array.reverse()array.sort()//sort方法比较的是字符串//通过比较函数的返回值正负来影响排序结果1234function compare(value1, value2) &#123; return value2-value1;&#125;array.sort(compare) 操作方法 array.concat()//不影响原来数组array.slice()//不影响原来数组array.splice()//删除（0,2）//插入（2，0，’a’）//替换（2，1，’a’) 位置方法 array.indexOf()array.lastIndexOf() 迭代方法 array.every()array.some()array.foreach()array.map()array.filter()//接受一个函数function（item,index,array） 归并方法 array.reduce()array.reduceRight()//这两个方法都会迭代数组所有项//接受一个函数function（prev,cur,index,array） ES6新方法 array.find()array.findIndex()//接受一个回调函数，find()返回查找到的值，findIndex()返回索引array.fill()//接受三个参数: fill(填充值，[ , ) )array.copyWithin()//接受两个参数：粘贴索引值，复制索引值]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -82,7 +116,7 @@
   <entry>
     <title><![CDATA[神奇的Javascript]]></title>
     <url>%2Fblog%2FJavascript%2F2%2F</url>
-    <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&gt;typeof NaN&lt;"number"//not a number,但它是number type的,NaN 的检测 isNaN。&gt;9999999999999999&lt;10000000000000000//js整数精度15位&gt;0.5 + 0.1 == 0.6&lt;true//小数精度17位&gt;0.1 + 0.2 == 0.3&lt;false//0.1+0.2值为0.30000000000000004.永远不要测定某个特点的浮点数值//可以通过乘以10或除以10来计算: 0.3&gt;Math.max()&lt;-Infinity// max 是 Math 的静态方法,返回给定的一组数字中的最大值。// 如果没有参数，结果为[`-bInfinity`]// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]&gt;Math.min()&lt;Infinity// min 是 Math 的静态方法,返回给定的一组数字中的最大值。// 如果没有参数，结果为[`Infinity`]// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]&gt;[] + []&lt;""//+中空数组转为空字符串，//在-，*运算中[]被转化为0&gt;[] + &#123;&#125;&lt;"[object object]"&gt;&#123;&#125; + []&lt;0&gt;true + true + true === 3&lt;true&gt;true - true&lt;0&gt;true == 1&lt;true&gt;true === 1&gt;false&gt;(!+[]+[]+![]).length&lt;9//我也看不懂，js是门玄学&gt;9+"1"&lt;"91"&gt;91-"1"&lt;90&gt;[] == 0&lt;true ###在JavaScript中,加法的规则其实很简单,只有两种情况:你只能把数字和数字相加,或者字符串和字符串相加,所有其他类型的值都会被自动转换成这两种类型的值. 参考文章:https://segmentfault.com/a/1190000008038678参考文章:https://github.com/jawil/blog/issues/1原文链接:yinzhuo.online]]></content>
+    <content type="text"><![CDATA[1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556&gt;typeof NaN&lt;"number"//not a number,但它是number type的,NaN 的检测 isNaN。&gt;9999999999999999&lt;10000000000000000//js整数精度15位&gt;0.5 + 0.1 == 0.6&lt;true//小数精度17位&gt;0.1 + 0.2 == 0.3&lt;false//0.1+0.2值为0.30000000000000004.永远不要测定某个特点的浮点数值//可以通过乘以10或除以10来计算: 0.3&gt;Math.max()&lt;-Infinity// max 是 Math 的静态方法,返回给定的一组数字中的最大值。// 如果没有参数，结果为[`-bInfinity`]// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]&gt;Math.min()&lt;Infinity// min 是 Math 的静态方法,返回给定的一组数字中的最大值。// 如果没有参数，结果为[`Infinity`]// 如果给定的参数中至少有一个参数无法被转换成数字，则会返回 [`NaN`]&gt;[] + []&lt;""//+中空数组转为空字符串，//在-，*运算中[]被转化为0&gt;[] + &#123;&#125;&lt;"[object object]"&gt;&#123;&#125; + []&lt;0&gt;true + true + true === 3&lt;true&gt;true - true&lt;0&gt;true == 1&lt;true&gt;true === 1&gt;false&gt;(!+[]+[]+![]).length&lt;9//我也看不懂，js是门玄学&gt;9+"1"&lt;"91"&gt;91-"1"&lt;90&gt;[] == 0&lt;true 在JavaScript中,加法的规则其实很简单,只有两种情况:你只能把数字和数字相加,或者字符串和字符串相加,所有其他类型的值都会被自动转换成这两种类型的值. 参考文章:https://segmentfault.com/a/1190000008038678参考文章:https://github.com/jawil/blog/issues/1原文链接:yinzhuo.online]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -94,7 +128,7 @@
   <entry>
     <title><![CDATA[一道题]]></title>
     <url>%2Fblog%2FJavascript%2F1%2F</url>
-    <content type="text"><![CDATA[12345var a = &#123;n : 1&#125;; var b = a; a.x =a = &#123;n : 2&#125;; console.log(a.x); // undefinedconsole.log(b.x); // &#123; n:2 &#125; 解析JS引用类型指针的工作方式&emsp;&emsp;首先是a指向了一个对象｛n:1｝,b指向了a所指向的对象&emsp;&emsp;然后 a.x = a = { n:2 }&emsp;&emsp;js赋值运算顺序为从右往左，不过由于”.”运算符优先级最高，所以先计算a.x。此时a指向的对象｛n:1 }新增了新的属性x,这个x的值为undefined。&emsp;&emsp;接着执行赋值预算 a={n:2},这个时候a指向的对象就发生了变化，指向了新的对象 ｛n:2｝。&emsp;&emsp;继续执行 a.x = a。此时啊a.x已经指向了对象｛n:1,x=undefined}中的x,等待被赋值，那么这个对象就变成了｛n:1,x:{n:2}｝,也就是b所指向的对象。 本质在于 .运算优先于=赋值运算如果还是理解不了，可以看图 ###其实这种题也只能拿来做考题，正常也不会有人这么写代码，写出来怕自己也理解不了。更多的写法是分开写会好一些。譬如：12345678910111213141516var a=&#123;n:1&#125;;var b=&#123;n:2&#125;;var c=a;var d;b.x=d=a.x=a=&#123;n:3&#125;//等价于a.x=&#123;n:3&#125;;b.x=&#123;n:3&#125;;a=&#123;n:3&#125;;d=&#123;n:3&#125;//结果是a : &#123;n:3&#125;b : &#123;n:2,x:&#123;n:3&#125;&#125;c : &#123;n:1,x:&#123;n:3&#125;&#125;d : &#123;n:3&#125;]]></content>
+    <content type="text"><![CDATA[12345var a = &#123;n : 1&#125;; var b = a; a.x =a = &#123;n : 2&#125;; console.log(a.x); // undefinedconsole.log(b.x); // &#123; n:2 &#125; 解析JS引用类型指针的工作方式&emsp;&emsp;首先是a指向了一个对象｛n:1｝,b指向了a所指向的对象&emsp;&emsp;然后 a.x = a = { n:2 }&emsp;&emsp;js赋值运算顺序为从右往左，不过由于”.”运算符优先级最高，所以先计算a.x。此时a指向的对象｛n:1 }新增了新的属性x,这个x的值为undefined。&emsp;&emsp;接着执行赋值预算 a={n:2},这个时候a指向的对象就发生了变化，指向了新的对象 ｛n:2｝。&emsp;&emsp;继续执行 a.x = a。此时啊a.x已经指向了对象｛n:1,x=undefined}中的x,等待被赋值，那么这个对象就变成了｛n:1,x:{n:2}｝,也就是b所指向的对象。 本质在于 .运算优先于=赋值运算如果还是理解不了，可以看图 其实这种题也只能拿来做考题，正常也不会有人这么写代码，写出来怕自己也理解不了。更多的写法是分开写会好一些。譬如：12345678910111213141516var a=&#123;n:1&#125;;var b=&#123;n:2&#125;;var c=a;var d;b.x=d=a.x=a=&#123;n:3&#125;//等价于a.x=&#123;n:3&#125;;b.x=&#123;n:3&#125;;a=&#123;n:3&#125;;d=&#123;n:3&#125;//结果是a : &#123;n:3&#125;b : &#123;n:2,x:&#123;n:3&#125;&#125;c : &#123;n:1,x:&#123;n:3&#125;&#125;d : &#123;n:3&#125;]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
