@@ -11,6 +11,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
+<script>
+	(function(){
+		if(''){
+			if (prompt('请输入文章密码','') !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
 
 
   
@@ -533,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Javascript/3/" rel="next" title="Javascript数组方法总结">
-                <i class="fa fa-chevron-left"></i> Javascript数组方法总结
+              <a href="/Javascript/4/" rel="next" title="Javascript字符串方法总结">
+                <i class="fa fa-chevron-left"></i> Javascript字符串方法总结
               </a>
             
           </div>
