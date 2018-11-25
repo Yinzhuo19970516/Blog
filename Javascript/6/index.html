@@ -120,12 +120,12 @@
 <meta property="og:url" content="http://yinzhuo.online/blog/Javascript/6/index.html">
 <meta property="og:site_name" content="YinZhuo&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.superbed.cn/pic/5bf18021c4ff9e24bf0ee12d">
-<meta property="og:image" content="https://www.superbed.cn/pic/5bf18040c4ff9e24bf0ee12e">
-<meta property="og:updated_time" content="2018-11-24T14:41:12.873Z">
+<meta property="og:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/42178357.jpg">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/14247550-e7bbdbe429fc2489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-25T12:08:08.830Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript运算符优先级和结合性">
-<meta name="twitter:image" content="https://www.superbed.cn/pic/5bf18021c4ff9e24bf0ee12d">
+<meta name="twitter:image" content="http://pg0douyd3.bkt.clouddn.com/18-10-8/42178357.jpg">
 
 
 
@@ -385,8 +385,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-24T22:41:12+08:00">
-                2018-11-24
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-25T20:08:08+08:00">
+                2018-11-25
               </time>
             
           </span>
@@ -472,22 +472,26 @@
       
 
       
-        <p><img src="https://www.superbed.cn/pic/5bf18021c4ff9e24bf0ee12d" style="width:600px; display:block;"></p>
+        <p><img src="http://pg0douyd3.bkt.clouddn.com/18-10-8/42178357.jpg" alt="封面"></p>
 <a id="more"></a>
-<h2 id="先放上mdn上关于运算符优先级关联性的汇总表"><a href="#先放上mdn上关于运算符优先级关联性的汇总表" class="headerlink" title="先放上mdn上关于运算符优先级关联性的汇总表"></a>先放上mdn上关于运算符优先级关联性的汇总表</h2><h3 id="下面的表将所有运算符按照优先级的不同从高到低排列。"><a href="#下面的表将所有运算符按照优先级的不同从高到低排列。" class="headerlink" title="下面的表将所有运算符按照优先级的不同从高到低排列。"></a>下面的表将所有运算符按照优先级的不同从高到低排列。</h3><p><img src="https://www.superbed.cn/pic/5bf18040c4ff9e24bf0ee12e" alt="image"></p>
-<h3 id="有一道题（摘自你不知道的JS-中卷））"><a href="#有一道题（摘自你不知道的JS-中卷））" class="headerlink" title="有一道题（摘自你不知道的JS(中卷））"></a>有一道题（摘自你不知道的JS(中卷））</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =<span class="number">42</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">"foo"</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = a &amp;&amp; b || c ? c || b ? a : c &amp;&amp; b : a;</span><br><span class="line">d; <span class="comment">//42</span></span><br></pre></td></tr></table></figure>
-<h4 id="通过查询表格，我们可以把上面代码分解："><a href="#通过查询表格，我们可以把上面代码分解：" class="headerlink" title="通过查询表格，我们可以把上面代码分解："></a>通过查询表格，我们可以把上面代码分解：</h4><blockquote>
+<p>##先放上mdn上关于运算符优先级关联性的汇总表</p>
+<p>###下面的表将所有运算符按照优先级的不同从高到低排列。<br><img src="http://upload-images.jianshu.io/upload_images/14247550-e7bbdbe429fc2489.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
+<p>###有一道题（摘自你不知道的JS(中卷））<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =<span class="number">42</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="string">"foo"</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> d = a &amp;&amp; b || c ? c || b ? a : c &amp;&amp; b : a;</span><br><span class="line">d; <span class="comment">//42</span></span><br></pre></td></tr></table></figure></p>
+<p>####通过查询表格，我们可以把上面代码分解：</p>
+<blockquote>
 <p>var d = ((a &amp;&amp; b) || c ) ? (( c || b ) ? a :(c &amp;&amp; b)) : a</p>
 </blockquote>
 <p>| 6 | [逻辑与] | 从左到右 | <code>… &amp;&amp; …</code> |<br>| 5 | [逻辑或] | 从左到右 | <code>… || …</code> |<br>| 4 | [条件运算符] | 从右到左 | <code>… ? … : …</code> |</p>
-<h4 id="逐一执行"><a href="#逐一执行" class="headerlink" title="逐一执行"></a>逐一执行</h4><blockquote>
+<p>####逐一执行</p>
+<blockquote>
 <p>(a &amp;&amp; b) 结果为：’’foo”<br>“foo” || c 结果为 ：”foo”<br>第一个？中，”foo”为真值<br>(c || b)结果为：”foo”<br>第二个？中，”foo”为真值<br>a的值为42<br>最后结果为42</p>
 </blockquote>
-<h3 id="还有一道题（摘自segmentfault）"><a href="#还有一道题（摘自segmentfault）" class="headerlink" title="还有一道题（摘自segmentfault）"></a>还有一道题（摘自segmentfault）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line">Foo.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">2</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Foo.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">3</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">4</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.getName(); <span class="comment">//2</span></span><br><span class="line">getName(); <span class="comment">//4</span></span><br><span class="line">Foo().getName(); <span class="comment">//1</span></span><br><span class="line">getName(); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">new</span> Foo.getName(); <span class="comment">//2</span></span><br><span class="line"><span class="keyword">new</span> Foo().getName(); <span class="comment">//3</span></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> Foo().getName(); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<p>###还有一道题（摘自segmentfault）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(<span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line">Foo.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">2</span>);</span><br><span class="line">&#125;;</span><br><span class="line">Foo.prototype.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">3</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">4</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  alert(<span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Foo.getName(); <span class="comment">//2</span></span><br><span class="line">getName(); <span class="comment">//4</span></span><br><span class="line">Foo().getName(); <span class="comment">//1</span></span><br><span class="line">getName(); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">new</span> Foo.getName(); <span class="comment">//2</span></span><br><span class="line"><span class="keyword">new</span> Foo().getName(); <span class="comment">//3</span></span><br><span class="line"><span class="keyword">new</span> <span class="keyword">new</span> Foo().getName(); <span class="comment">//3</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>执行Foo.getName()这个函数，输出2<br>先执行function getName(),在执行var getName = function，输出4，进行了一次覆盖<br>执行Foo()里的getName(),因为没有用var定义，所以该函数是定义在全局的，this也指向windows,此时覆盖掉以前的4，输出1<br>执行全局的getName, 输出1<br>new (Foo.getName)（)    .操作符优先级高于new(不带参数)优先级，输出2<br>(new Foo()).getName();   如果是new (Foo().getName)()，那么在执行Foo()时，它是一个函数调用，优先级低于带参数的new，因此这样不行。那么只能是(new Foo()).getName()，输出3<br>new((new Foo()).getName)（),输出3</p>
 </blockquote>
-<h3 id="考察对this、原型链、函数对象、函数声明提前等一系列知识。"><a href="#考察对this、原型链、函数对象、函数声明提前等一系列知识。" class="headerlink" title="考察对this、原型链、函数对象、函数声明提前等一系列知识。"></a>考察对this、原型链、函数对象、函数声明提前等一系列知识。</h3>
+<p>###考察对this、原型链、函数对象、函数声明提前等一系列知识。</p>
+
       
     </div>
     
@@ -619,17 +623,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -648,7 +643,7 @@
               
                 <a href="/blog/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -659,7 +654,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/blog/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -670,7 +665,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/blog/tags/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -740,22 +735,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#先放上mdn上关于运算符优先级关联性的汇总表"><span class="nav-number">1.</span> <span class="nav-text">先放上mdn上关于运算符优先级关联性的汇总表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下面的表将所有运算符按照优先级的不同从高到低排列。"><span class="nav-number">1.1.</span> <span class="nav-text">下面的表将所有运算符按照优先级的不同从高到低排列。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有一道题（摘自你不知道的JS-中卷））"><span class="nav-number">1.2.</span> <span class="nav-text">有一道题（摘自你不知道的JS(中卷））</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通过查询表格，我们可以把上面代码分解："><span class="nav-number">1.2.1.</span> <span class="nav-text">通过查询表格，我们可以把上面代码分解：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逐一执行"><span class="nav-number">1.2.2.</span> <span class="nav-text">逐一执行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#还有一道题（摘自segmentfault）"><span class="nav-number">1.3.</span> <span class="nav-text">还有一道题（摘自segmentfault）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#考察对this、原型链、函数对象、函数声明提前等一系列知识。"><span class="nav-number">1.4.</span> <span class="nav-text">考察对this、原型链、函数对象、函数声明提前等一系列知识。</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
         <div class="back-to-top">
@@ -797,7 +776,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">5.7k</span>
+    <span title="Site words total count">3.3k</span>
   
 </div>
 
