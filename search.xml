@@ -12,6 +12,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[一点两点三四点]]></title>
+    <url>%2Fblog%2Fsecret%2F10%2F</url>
+    <content type="text"><![CDATA[几点实习期间的感悟1.当对技术熟悉的情况下，拿到原型图先想好自己的页面，准备切哪些图，该怎么写，用什么插件，怎么布局之类。但是如果技术不熟悉，就先上手开始写。2.css样式文件不能太复杂，能提出的公有样式尽量提出来。同类样式可以提出来一个新的文件，进行引入，相同的样式写一遍，只修改不同部分，颜色之类的公有样式提出一个新的文件夹，对之前的代码有优化的想法，请立即重构。3.尽量避免前景图，多用背景图，多采用flex布局。4.不耻下问，学无止境界]]></content>
+      <categories>
+        <category>secret</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[前端视频资源收集]]></title>
     <url>%2Fblog%2Fresource%2F11%2F</url>
     <content type="text"><![CDATA[只分享些要钱的Vue源码解读 链接：https://pan.baidu.com/s/1yLmaYiZOm03DeUsvo8qKTw 密码：cxu5 js设计模式解读 链接：https://pan.baidu.com/s/1Be-II3JSRk5S8Xza92bHNg 密码：sihn jq源码解读 链接：https://pan.baidu.com/s/1L6-sva9p85CYfrN2ZLoaNw 密码：ba3g 小程序汇总 链接：https://pan.baidu.com/s/1wJtqc1lrHLDQbYRPFmlpxw 密码：rxic V8引擎 链接：https://pan.baidu.com/s/1hpoZoxaUmu2MWEGMplgxFw 密码：oc3d 前端面试 链接：https://pan.baidu.com/s/1dL3-bCons6uCGm1loICWCw 密码：qk34 开课吧 链接：https://pan.baidu.com/s/181f9bBkUIDXomRGv5UYUyg 密码：xz88链接：https://pan.baidu.com/s/1W9x8JRhM8hBksBTcnmq5gg 密码：0e9d]]></content>
@@ -21,17 +32,6 @@
       <tags>
         <tag>前端</tag>
         <tag>资源</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[一点两点三四点]]></title>
-    <url>%2Fblog%2Fsecret%2F10%2F</url>
-    <content type="text"><![CDATA[几点实习期间的感悟1.当对技术熟悉的情况下，拿到原型图先想好自己的页面，准备切哪些图，该怎么写，用什么插件，怎么布局之类。但是如果技术不熟悉，就先上手开始写。2.css样式文件不能太复杂，能提出的公有样式尽量提出来。同类样式可以提出来一个新的文件，进行引入，相同的样式写一遍，只修改不同部分，颜色之类的公有样式提出一个新的文件夹，对之前的代码有优化的想法，请立即重构。3.尽量避免前景图，多用背景图，多采用flex布局。4.不耻下问，学无止境界]]></content>
-      <categories>
-        <category>secret</category>
-      </categories>
-      <tags>
-        <tag>小程序</tag>
       </tags>
   </entry>
   <entry>
