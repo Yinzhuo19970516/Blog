@@ -89,9 +89,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Javascript字符串方法总结]]></title>
-    <url>%2Fblog%2FJavascript%2F4%2F</url>
-    <content type="text"><![CDATA[字符方法 string.chartAt()srting.chartCodeAt() 字符串操作方法 srting.concat()string.slice()string.substr()//第二个参数指定的是返回的个数//会把第二参数的负值转换为0string.substring()//都对原字符串没有影响//会把所有负值参数转换为0 字符串位置方法 string.indexOf()string.lastIndexOf() trim()方法 string.trim()//删除前后空格 大小写转换方法 string.toLowerCase()string.toUpperCase() 匹配方法 string.match()string.search()string.replace()string.slice() 其他方法 localeCompare()//比较字符串fromCharCode()//字符编码转为字符串 ES6新方法 string.includes()string.startsWith()string.endsWith()//前三个只接受字符串，不接受正则表达式，可以用indexOf()string.repeat()]]></content>
+    <title><![CDATA[Javascript数组方法总结]]></title>
+    <url>%2Fblog%2FJavascript%2F3%2F</url>
+    <content type="text"><![CDATA[检测数组 array.isArray() 转换方法 array.toString()array.valueOf()array.join()//join使用不同的分隔符来构建字符串//若不给join传入任何值，或者给它传入undefined，则使用逗号作为分隔符 栈方法 array.push(“a”)array.pop()//调用pop()时，它会返回数组的最后一项 队列方法 array.shift()//调用shift()时，它会返回数组的第一项array.unshift(“b”) 重排序方法 array.reverse()array.sort()//sort方法比较的是字符串//通过比较函数的返回值正负来影响排序结果1234function compare(value1, value2) &#123; return value2-value1;&#125;array.sort(compare) 操作方法 array.concat()//不影响原来数组array.slice()//不影响原来数组array.splice()//删除（0,2）//插入（2，0，’a’）//替换（2，1，’a’) 位置方法 array.indexOf()array.lastIndexOf() 迭代方法 array.every()array.some()array.foreach()array.map()array.filter()//接受一个函数function（item,index,array） 归并方法 array.reduce()array.reduceRight()//这两个方法都会迭代数组所有项//接受一个函数function（prev,cur,index,array） ES6新方法 array.find()array.findIndex()//接受一个回调函数，find()返回查找到的值，findIndex()返回索引array.fill()//接受三个参数: fill(填充值，[ , ) )array.copyWithin()//接受两个参数：粘贴索引值，复制索引值]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
@@ -102,9 +102,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Javascript数组方法总结]]></title>
-    <url>%2Fblog%2FJavascript%2F3%2F</url>
-    <content type="text"><![CDATA[检测数组 array.isArray() 转换方法 array.toString()array.valueOf()array.join()//join使用不同的分隔符来构建字符串//若不给join传入任何值，或者给它传入undefined，则使用逗号作为分隔符 栈方法 array.push(“a”)array.pop()//调用pop()时，它会返回数组的最后一项 队列方法 array.shift()//调用shift()时，它会返回数组的第一项array.unshift(“b”) 重排序方法 array.reverse()array.sort()//sort方法比较的是字符串//通过比较函数的返回值正负来影响排序结果1234function compare(value1, value2) &#123; return value2-value1;&#125;array.sort(compare) 操作方法 array.concat()//不影响原来数组array.slice()//不影响原来数组array.splice()//删除（0,2）//插入（2，0，’a’）//替换（2，1，’a’) 位置方法 array.indexOf()array.lastIndexOf() 迭代方法 array.every()array.some()array.foreach()array.map()array.filter()//接受一个函数function（item,index,array） 归并方法 array.reduce()array.reduceRight()//这两个方法都会迭代数组所有项//接受一个函数function（prev,cur,index,array） ES6新方法 array.find()array.findIndex()//接受一个回调函数，find()返回查找到的值，findIndex()返回索引array.fill()//接受三个参数: fill(填充值，[ , ) )array.copyWithin()//接受两个参数：粘贴索引值，复制索引值]]></content>
+    <title><![CDATA[Javascript字符串方法总结]]></title>
+    <url>%2Fblog%2FJavascript%2F4%2F</url>
+    <content type="text"><![CDATA[字符方法 string.chartAt()srting.chartCodeAt() 字符串操作方法 srting.concat()string.slice()string.substr()//第二个参数指定的是返回的个数//会把第二参数的负值转换为0string.substring()//都对原字符串没有影响//会把所有负值参数转换为0 字符串位置方法 string.indexOf()string.lastIndexOf() trim()方法 string.trim()//删除前后空格 大小写转换方法 string.toLowerCase()string.toUpperCase() 匹配方法 string.match()string.search()string.replace()string.slice() 其他方法 localeCompare()//比较字符串fromCharCode()//字符编码转为字符串 ES6新方法 string.includes()string.startsWith()string.endsWith()//前三个只接受字符串，不接受正则表达式，可以用indexOf()string.repeat()]]></content>
       <categories>
         <category>Javascript</category>
       </categories>
