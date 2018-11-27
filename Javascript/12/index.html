@@ -121,7 +121,7 @@
 <meta property="og:site_name" content="YinZhuo&#39;s Blog">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://api.superbed.cn/pic/5bfd6cdac4ff9e058246060a">
-<meta property="og:updated_time" content="2018-11-27T16:13:12.752Z">
+<meta property="og:updated_time" content="2018-11-27T16:16:09.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能Javascript读书笔记">
 <meta name="twitter:image" content="https://api.superbed.cn/pic/5bfd6cdac4ff9e058246060a">
@@ -384,7 +384,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-11-28T00:13:12+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-11-28T00:16:09+08:00">
                 2018-11-28
               </time>
             
@@ -434,7 +434,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  666
+                  667
                 </span>
               
 
@@ -473,7 +473,7 @@
       
         <p><img src="https://api.superbed.cn/pic/5bfd6cdac4ff9e058246060a" style="width:600px; display:block;"><br><a id="more"></a></p>
 <h2 id="第一章-加载和执行"><a href="#第一章-加载和执行" class="headerlink" title="第一章 加载和执行"></a>第一章 加载和执行</h2><ul>
-<li>推荐将所有的<script>标签尽可能的放到<body>标签的底部 </li>
+<li>推荐将所有的script标签尽可能的放到body标签的底部 </li>
 <li>合并所有外链的JS</li>
 <li><p>无阻塞脚本的方法</p>
 <ul>
@@ -489,7 +489,7 @@
 </li>
 <li><p>XMLHttpRequest脚本注入</p>
 <ul>
-<li>先创建一个XHR对象，然后用它get下载js文件，最后通过创建动态<script>元素代码插入页面中,但是无法跨域 ，大型应用不会使用</li>
+<li>先创建一个XHR对象，然后用它get下载js文件，最后通过创建动态script素代码插入页面中,但是无法跨域 ，大型应用不会使用</li>
 </ul>
 </li>
 </ul>
@@ -515,9 +515,10 @@
 </li>
 </ul>
 <ul>
-<li>为修改的节点创建一个备份</li>
-</ul>
+<li><p>为修改的节点创建一个备份</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> old = <span class="built_in">document</span>.getElementById(<span class="string">'mylist'</span>);</span><br><span class="line"><span class="keyword">var</span> clone = old.cloneNode(<span class="literal">true</span>);</span><br><span class="line">appendDataToElement(clone, data);</span><br><span class="line">old.parentNode.replaceChild(clone, old);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 </ul>
 </li>
@@ -531,11 +532,11 @@
 <h2 id="第五章-正则表达式和字符串"><a href="#第五章-正则表达式和字符串" class="headerlink" title="第五章 正则表达式和字符串"></a>第五章 正则表达式和字符串</h2></li>
 <li>字符串合并的时候简单的”+”和“+=”操作符<ul>
 <li>str+=’abc’+’efg;//2个以上的字符串拼接，会产生临时字符串</li>
-<li>str=str+’abc’+’efg’;//推荐，提速10%~40% <h2 id="关于正则还有一堆东西，以后在叙。"><a href="#关于正则还有一堆东西，以后在叙。" class="headerlink" title="关于正则还有一堆东西，以后在叙。"></a>关于正则还有一堆东西，以后在叙。</h2><h2 id="后记，这本书之后的东西比如快速响应的用户界面，AJAX-编程实践等等感觉说的不够实在，在这里不想在叙述。"><a href="#后记，这本书之后的东西比如快速响应的用户界面，AJAX-编程实践等等感觉说的不够实在，在这里不想在叙述。" class="headerlink" title="后记，这本书之后的东西比如快速响应的用户界面，AJAX,编程实践等等感觉说的不够实在，在这里不想在叙述。"></a>后记，这本书之后的东西比如快速响应的用户界面，AJAX,编程实践等等感觉说的不够实在，在这里不想在叙述。</h2></li>
+<li>str=str+’abc’+’efg’;//推荐，提速10%~40% </li>
 </ul>
 </li>
 </ul>
-</script></li></ul>
+<h2 id="关于正则还有一堆东西，以后在叙。"><a href="#关于正则还有一堆东西，以后在叙。" class="headerlink" title="关于正则还有一堆东西，以后在叙。"></a>关于正则还有一堆东西，以后在叙。</h2><h2 id="后记，这本书之后的东西比如快速响应的用户界面，AJAX-编程实践等等感觉说的不够实在，在这里不想在叙述。"><a href="#后记，这本书之后的东西比如快速响应的用户界面，AJAX-编程实践等等感觉说的不够实在，在这里不想在叙述。" class="headerlink" title="后记，这本书之后的东西比如快速响应的用户界面，AJAX,编程实践等等感觉说的不够实在，在这里不想在叙述。"></a>后记，这本书之后的东西比如快速响应的用户界面，AJAX,编程实践等等感觉说的不够实在，在这里不想在叙述。</h2>
       
     </div>
     
@@ -592,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/xcx/9/" rel="next" title="小程序架构原理调研">
-                <i class="fa fa-chevron-left"></i> 小程序架构原理调研
+              <a href="/blog/secret/10/" rel="next" title="一点两点三四点">
+                <i class="fa fa-chevron-left"></i> 一点两点三四点
               </a>
             
           </div>
@@ -787,7 +788,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-加载和执行"><span class="nav-number">1.</span> <span class="nav-text">第一章 加载和执行</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-加载和执行"><span class="nav-number">1.</span> <span class="nav-text">第一章 加载和执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-数据存取"><span class="nav-number">2.</span> <span class="nav-text">第二章 数据存取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-DOM编程"><span class="nav-number">3.</span> <span class="nav-text">第三章 DOM编程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-算法和流程控制"><span class="nav-number">4.</span> <span class="nav-text">第四章 算法和流程控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-正则表达式和字符串"><span class="nav-number">5.</span> <span class="nav-text">第五章 正则表达式和字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于正则还有一堆东西，以后在叙。"><span class="nav-number">6.</span> <span class="nav-text">关于正则还有一堆东西，以后在叙。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记，这本书之后的东西比如快速响应的用户界面，AJAX-编程实践等等感觉说的不够实在，在这里不想在叙述。"><span class="nav-number">7.</span> <span class="nav-text">后记，这本书之后的东西比如快速响应的用户界面，AJAX,编程实践等等感觉说的不够实在，在这里不想在叙述。</span></a></li></ol></div>
             
 
           </div>
