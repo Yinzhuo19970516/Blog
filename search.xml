@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Javascript异步解决方案的发展历程]]></title>
+    <url>%2Fblog%2FJavascript%2F15%2F</url>
+    <content type="text"><![CDATA[1.回调函数1234567function f1(callback)&#123; setTimeout(function()&#123; //f1的任务代码 callback(); &#125;,1000);&#125;f1(f2); 123456789ajax('XXX1', () =&gt; &#123; // callback 函数体 ajax('XXX2', () =&gt; &#123; // callback 函数体 ajax('XXX3', () =&gt; &#123; // callback 函数体 &#125;) &#125;)&#125;) 优点：便于理解缺点：回调地狱，不能捕获错误 2.事件监听1234567f1.on('done', f2);function f1()&#123; setTimeout(function () &#123; // f1的任务代码 f1.trigger('done'); &#125;, 1000); &#125; 容易理解，可以绑定多个事件，每个事件可以指定多个回调函数；缺点，整个流程都要变成事件驱动型，运行流程会变得不清晰。 3.发布/订阅（观察者模式）12345678jQuery.subscribe("done", f2);function f1()&#123; setTimeout(function () &#123; // f1的任务代码 jQuery.publish("done"); &#125;, 1000);&#125;jQuery.unsubscribe("done", f2); 与”事件监听”类似，但是明显优于后者。因为我们可以通过查看”消息中心”，了解存在多少信号、每个信号有多少订阅者，从而监控程序的运行。 4.Promises对象Promise就是为了解决callback的问题而产生的Promise实现了链式调用，也就是说每次then后返回的都是一个全新的Promise,如果我们在 then 中 return ，return 的结果会被 Promise.resolve() 包装12345678910ajax('XXX1') .then(res =&gt; &#123; // 操作逻辑 return ajax('XXX2') &#125;).then(res =&gt; &#123; // 操作逻辑 return ajax('XXX3') &#125;).then(res =&gt; &#123; // 操作逻辑 &#125;) 解决了回调地狱的问题,无法取消 Promise ，错误需要通过回调函数来捕获 5.Generator特点：可以控制函数的执行,Generator函数是协程在ES6中的实现，最大的特点就是可以交出函数的执行权（即暂停执行）执行Generator函数后会返回一个遍历器对象（Iterator）。本质上Generator是一个状态机，每次的遍历Generator函数返回的都是函数内部的每个状态。123456789function* gen() &#123; yield 1; yield 2; return 1; &#125; var g = gen(); gen.next() // &#123;value:1,done:false&#125; gen.next() // &#123;value:2,done:false&#125; gen.next() // &#123;value:3,done:true&#125; Generator函数是分段执行的，yield语句是暂停执行的标记，而next方法可以恢复执行。缺点还需要编写自动执行器 6.使用async函数async函数的实现就是将Generator函数和自动执行器包装在一个函数中1234function async gen()&#123; awiat 1; awiat 2;&#125; 异步编程的语法目标，就是怎样让它更像同步编程，使用async/await的方法，使得异步编程与同步编程看起来相差无几了。 7.借助流程控制库NPM社区中出现了很多流程控制库可以供开发者直接使用，其中很流行的就是async库，该库提供了一些流程控制方法,其官方文档见http://caolan.github.io/async/docs.html如果需要执行的任务紧密结合。下一个任务需要上一个任务的结果做输入，应该使用瀑布式如果多个任务必须依次执行，而且之间没有数据交换，应该使用串行执行如果多个任务之间没有任何依赖，而且执行顺序没有要求，应该使用并行执行 8.使用Web WorkersWeb Worker是HTML5新标准中新添加的一个功能，Web Worker的基本原理就是在当前javascript的主线程中，使用Worker类加载一个javascript文件来开辟一个新的线程，起到互不阻塞执行的效果，并且提供主线程和新线程之间数据交换的接口：postMessage，onmessage。其数据交互过程也类似于事件发布/监听模式，异能实现异步操作 9 对比异步读取文件1.回调函数12345678fs.readFile(fileA,(err,data)=&gt;&#123; if(err) throw err; console.log(data); fs.readFile(fileB,(_err,_data)=&gt;&#123; if(_err) throw err; console.log(_data) &#125;)&#125; 2.使用Promise123456789101112131415var fs = require('fs');var readFile = function(path) &#123; return new Promise((resolve, reject) =&gt; &#123; fs.readFile(path, (err, data) =&gt; &#123; if (err) reject(err) resolve(data) &#125;) &#125;)&#125;readFile(fileA).then((data)=&gt;&#123;console.log(data)&#125;).then(()=&gt;&#123;return readFile(fileB)&#125;).then((data)=&gt;&#123;console.log(data)&#125;)// ... 读取n次.catch((err)=&gt;&#123;console.log(err)&#125;) 3.使用Generator12345678910111213141516171819var fs = require('fs');var readFile = (path) =&gt; &#123; return new Promise((resolve, reject) =&gt; &#123; fs.readFile(path, (err, data) =&gt; &#123; if (err) reject(err) resolve(data) &#125;) &#125;)&#125;var gen = function* () &#123; var f1 = yield readFile(fileA); var f2 = yield readFile(fileB); console.log(f1.toString()); console.log(f2.toString());&#125;gen.next()grn.next() 4.使用Async123456var asyncReadFile = async function() &#123; var f1 = await readFile(fileA); var f2 = await readFile(fileB); console.log(f1.toString()) console.log(f2.toString())&#125;]]></content>
+      <categories>
+        <category>Javascript</category>
+      </categories>
+      <tags>
+        <tag>Javascript</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[转载Javascript三座大山]]></title>
     <url>%2Fblog%2FJavascript%2F14%2F</url>
     <content type="text"><![CDATA[前端面试送命题-JS三座大山]]></content>
@@ -37,17 +49,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[小程序架构原理调研]]></title>
-    <url>%2Fblog%2Fxcx%2F9%2F</url>
-    <content type="text"><![CDATA[为什么小程序比较快？安装包缓存分包加载双线程webview预加载native组件 什么是wxs? https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/ 与 WXML 是在同一个线程运行的，避免了跨线程通信的开销 双线程 逻辑层：创建一个单独的线程去执行 JavaScript，在这个环境下执行的都是有关小程序业务逻辑的代码 渲染层：界面渲染相关的任务全都在 WebView 线程里执行，通过逻辑层代码去控制渲染哪些界面。一个小程序存在多个界面，所以渲染层存在多个 WebView 线程 双线程通信 在渲染层把 WXML 转化成对应的 JS 对象。 在逻辑层发生数据变更的时候，通过宿主环境提供的 setData 方法把数据从逻辑层传递到 Native，再转发到渲染层。 经过对比前后差异，把差异应用在原来的 DOM 树上，更新界面。 优点：不会阻塞，可以有多个webview,页面切换更流畅 缺点： 在 page-frame 上无法调用业务 JS。 跨线程通信的成本很高，不适合需要频繁通信的场景。 业务 JS 无法直接控制 DOM。 所以引入了wxs 运行机制冷启动 热启动更新机制 冷启动时如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要等下一次冷启动才会应用上。 如果需要马上应用最新版本，可以使用 wx.getUpdateManager API 进行处理。 运行机制 小程序没有重启的概念 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后（目前是5分钟）会被微信主动销毁 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁 view wcc index.wxml wcsc index.wxss component 使用Polymer框架实现Web Component Native Component 目前Native实现的组件有canvas video map textarea;Native组件层在WebView层之上 webview预加载每次小程序进入除了当前页面,Native预先额外加载一个WebView当打开指定页面时，用默认数据直接渲染，请求数据回来时局部更新返回显示历史View退出小程序，View状态不销毁 逻辑层数据绑定 Binding 单向数据流 识别哪个UI元素被绑定了相应的对象。 监视对象状态的变化。 将所有变化传播到绑定的视图上。 生命周期 Life Cycle 渲染层和逻辑层之间通信，是通过 Native 转发实现的。逻辑层通过 Page 实例的setData方法传递数据到渲染层。由于需要两个线程的一些通信消耗，为了提高性能，每次只设置需要改变的最小单位数据。生命周期顺序：onLoad -&gt; onShow -&gt; onReady。 API通过WeixinJSBridge和Native 进行通信 路由 Router小程序优点 提前新建WebView，准备新页面渲染。 View层和逻辑层分离，通过数据驱动，不直接操作DOM。 使用Virtual DOM，进行局部更新。 全部使用https，确保传输中安全。 加入rpx单位，隔离设备尺寸，方便开发。 优化分包加载 https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages.html setData原理 setData函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的this.data的值（同步）。逻辑层需要更改界面时，只要把修改后的 data 通过 setData 传到渲染层。传输的数据，会转换为字符串形式传递，故应尽量避免传递大量数据。渲染层会根据前面提到的渲染机制重新生成 VD（虚拟 DOM）树，并更新到对应的 DOM 树上，引起界面变化。 一次交互，通过setDATA引起页面变化，要进过4次通信，强交互的场景会出现卡顿，所以引入原生组件 渲染层 -&gt; Native（点击事件）。Native -&gt; 逻辑层（点击事件）。逻辑层 -&gt; Native（setData）。Native -&gt; 渲染层（setData）。 数据预加载 先App中请求数据,在index.js使用数据 安全与管控 客户端系统有 JavaScript 的解释引擎，则可以创建一个单独的线程去执行 JavaScript，这个环境下只执行有关小程序业务逻辑的代码。界面渲染相关的任务呢，就丢到 webview 线程里面，通过逻辑层代码去控制渲染哪些界面。 把开发者的 JS 逻辑代码放到单独的线程去运行，因为不在 Webview 线程里，所以这个环境没有 Webview 任何接口，自然的开发者就没法直接操作 DOM，也就没法动态去更改界面或者抓取页面数据。 同时小程序不支持动态载入脚本，XSS 漏洞自然也无缝可钻 官方审核 每个微信小程序需要事先设置一个通讯域名，小程序只可以跟指定的域名与进行网络通信 须使用 HTTPS 发起网络请求。请求时系统会对服务器域名使用的 HTTPS 证书进行校验，如果校验失败，则请求不能成功发起。 token机制避免CSRF 在小程序中调用wx.login()，能拿到一个code作为用户登录凭证（有效期五分钟）。在开发者服务器后台，开发者可使用code换取openid和session_key等信息（code只能使用一次）]]></content>
-      <categories>
-        <category>xcx</category>
-      </categories>
-      <tags>
-        <tag>小程序</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[前端视频资源收集]]></title>
     <url>%2Fblog%2Fresource%2F11%2F</url>
     <content type="text"><![CDATA[只分享些要钱的Vue源码解读 链接：https://pan.baidu.com/s/1yLmaYiZOm03DeUsvo8qKTw 密码：cxu5 js设计模式解读 链接：https://pan.baidu.com/s/1Be-II3JSRk5S8Xza92bHNg 密码：sihn jq源码解读 链接：https://pan.baidu.com/s/1L6-sva9p85CYfrN2ZLoaNw 密码：ba3g 小程序汇总 链接：https://pan.baidu.com/s/1wJtqc1lrHLDQbYRPFmlpxw 密码：rxic V8引擎 链接：https://pan.baidu.com/s/1hpoZoxaUmu2MWEGMplgxFw 密码：oc3d 前端面试 链接：https://pan.baidu.com/s/1dL3-bCons6uCGm1loICWCw 密码：qk34 开课吧 链接：https://pan.baidu.com/s/181f9bBkUIDXomRGv5UYUyg 密码：xz88链接：https://pan.baidu.com/s/1W9x8JRhM8hBksBTcnmq5gg 密码：0e9d]]></content>
@@ -57,6 +58,17 @@
       <tags>
         <tag>前端</tag>
         <tag>资源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[小程序架构原理调研]]></title>
+    <url>%2Fblog%2Fxcx%2F9%2F</url>
+    <content type="text"><![CDATA[为什么小程序比较快？安装包缓存分包加载双线程webview预加载native组件 什么是wxs? https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/ 与 WXML 是在同一个线程运行的，避免了跨线程通信的开销 双线程 逻辑层：创建一个单独的线程去执行 JavaScript，在这个环境下执行的都是有关小程序业务逻辑的代码 渲染层：界面渲染相关的任务全都在 WebView 线程里执行，通过逻辑层代码去控制渲染哪些界面。一个小程序存在多个界面，所以渲染层存在多个 WebView 线程 双线程通信 在渲染层把 WXML 转化成对应的 JS 对象。 在逻辑层发生数据变更的时候，通过宿主环境提供的 setData 方法把数据从逻辑层传递到 Native，再转发到渲染层。 经过对比前后差异，把差异应用在原来的 DOM 树上，更新界面。 优点：不会阻塞，可以有多个webview,页面切换更流畅 缺点： 在 page-frame 上无法调用业务 JS。 跨线程通信的成本很高，不适合需要频繁通信的场景。 业务 JS 无法直接控制 DOM。 所以引入了wxs 运行机制冷启动 热启动更新机制 冷启动时如果发现有新版本，将会异步下载新版本的代码包，并同时用客户端本地的包进行启动，即新版本的小程序需要等下一次冷启动才会应用上。 如果需要马上应用最新版本，可以使用 wx.getUpdateManager API 进行处理。 运行机制 小程序没有重启的概念 当小程序进入后台，客户端会维持一段时间的运行状态，超过一定时间后（目前是5分钟）会被微信主动销毁 当短时间内（5s）连续收到两次以上收到系统内存告警，会进行小程序的销毁 view wcc index.wxml wcsc index.wxss component 使用Polymer框架实现Web Component Native Component 目前Native实现的组件有canvas video map textarea;Native组件层在WebView层之上 webview预加载每次小程序进入除了当前页面,Native预先额外加载一个WebView当打开指定页面时，用默认数据直接渲染，请求数据回来时局部更新返回显示历史View退出小程序，View状态不销毁 逻辑层数据绑定 Binding 单向数据流 识别哪个UI元素被绑定了相应的对象。 监视对象状态的变化。 将所有变化传播到绑定的视图上。 生命周期 Life Cycle 渲染层和逻辑层之间通信，是通过 Native 转发实现的。逻辑层通过 Page 实例的setData方法传递数据到渲染层。由于需要两个线程的一些通信消耗，为了提高性能，每次只设置需要改变的最小单位数据。生命周期顺序：onLoad -&gt; onShow -&gt; onReady。 API通过WeixinJSBridge和Native 进行通信 路由 Router小程序优点 提前新建WebView，准备新页面渲染。 View层和逻辑层分离，通过数据驱动，不直接操作DOM。 使用Virtual DOM，进行局部更新。 全部使用https，确保传输中安全。 加入rpx单位，隔离设备尺寸，方便开发。 优化分包加载 https://developers.weixin.qq.com/miniprogram/dev/framework/subpackages.html setData原理 setData函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的this.data的值（同步）。逻辑层需要更改界面时，只要把修改后的 data 通过 setData 传到渲染层。传输的数据，会转换为字符串形式传递，故应尽量避免传递大量数据。渲染层会根据前面提到的渲染机制重新生成 VD（虚拟 DOM）树，并更新到对应的 DOM 树上，引起界面变化。 一次交互，通过setDATA引起页面变化，要进过4次通信，强交互的场景会出现卡顿，所以引入原生组件 渲染层 -&gt; Native（点击事件）。Native -&gt; 逻辑层（点击事件）。逻辑层 -&gt; Native（setData）。Native -&gt; 渲染层（setData）。 数据预加载 先App中请求数据,在index.js使用数据 安全与管控 客户端系统有 JavaScript 的解释引擎，则可以创建一个单独的线程去执行 JavaScript，这个环境下只执行有关小程序业务逻辑的代码。界面渲染相关的任务呢，就丢到 webview 线程里面，通过逻辑层代码去控制渲染哪些界面。 把开发者的 JS 逻辑代码放到单独的线程去运行，因为不在 Webview 线程里，所以这个环境没有 Webview 任何接口，自然的开发者就没法直接操作 DOM，也就没法动态去更改界面或者抓取页面数据。 同时小程序不支持动态载入脚本，XSS 漏洞自然也无缝可钻 官方审核 每个微信小程序需要事先设置一个通讯域名，小程序只可以跟指定的域名与进行网络通信 须使用 HTTPS 发起网络请求。请求时系统会对服务器域名使用的 HTTPS 证书进行校验，如果校验失败，则请求不能成功发起。 token机制避免CSRF 在小程序中调用wx.login()，能拿到一个code作为用户登录凭证（有效期五分钟）。在开发者服务器后台，开发者可使用code换取openid和session_key等信息（code只能使用一次）]]></content>
+      <categories>
+        <category>xcx</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
       </tags>
   </entry>
   <entry>
